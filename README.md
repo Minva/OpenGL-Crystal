@@ -6,14 +6,14 @@ OpenGL binding to Crystal
 ```yaml
 dependencies:
   src:
-    github: your-github-user/src
+    github: lodenos/OpenGL-Crystal
 ```
 2 - Run `shards install`
 
 ## Usage
 
 ```crystal
-require "src"
+require "opengl"
 ```
 
 TODO: Write usage instructions here
@@ -24,7 +24,7 @@ TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/src/fork>)
+1. Fork it (<https://github.com/lodenos/OpenGL-Crystal/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
