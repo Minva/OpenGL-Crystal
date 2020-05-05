@@ -282,7 +282,42 @@ genType exp(genType x);
 genType exp2(genType x);
 
 
+genType faceforward(genType N, genType I, genType Nref);
+genDType faceforward(genDType N, genDType I, genDType Nref);
+GLsync glFenceSync(GLenum condition, GLbitfield flags);
+genIType findLSB(genIType value);
+genIType findLSB(genUType value);
+genIType findMSB(genIType value);
+genIType findMSB(genUType value);
+void glFinish(void);
+genIType floatBitsToInt(genType x);
+genUType floatBitsToUint(genType x);
+genType floor(genType x);
+genDType floor(genDType x)
+void glFlush(void);
+void glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length);
+void glFlushMappedNamedBufferRange(GLuint buffer, GLintptr offset, GLsizeiptr length);
+genType fma(genType a, genType b, genType c);
+genDType fma(genDType a, genDType b, genDType c);
+genType fract(genType x);
+genDType fract(genDType x);
+void glFramebufferParameteri(GLenum target, GLenum pname, GLint param);
+void glNamedFramebufferParameteri(GLuint framebuffer, GLenum pname, GLint param);
 
-
+void glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+void glNamedFramebufferRenderbuffer(GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+void glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level);
+void glFramebufferTexture1D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+void glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+void glFramebufferTexture3D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer);
+void glNamedFramebufferTexture(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level);
+void glFramebufferTextureLayer(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+void glNamedFramebufferTextureLayer(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer);
+genType frexp(genType x, out genIType exp);
+genDType frexp(genDType x, out genIType exp);
+void glFrontFace(GLenum mode);
+genType fwidth(genType p);
+genType fwidthCoarse(genType p);
+genType fwidthFine(genType p);
 
 https://www.khronos.org/registry/OpenGL-Refpages/gl4/
