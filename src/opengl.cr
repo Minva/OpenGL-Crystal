@@ -1,393 +1,423 @@
+# genType: floats
+# genDType: double floats
+# genIType: signed integers
+# genUType: unsigned integers
+# genBType: bools
+# mat: float matrices
+# dmat: double matrices
+
+# https://www.khronos.org/registry/OpenGL-Refpages/gl4/
+
+# GLbool	1+	A bool value, either GL_TRUE or GL_FALSE	
+# GLbyte	8	Signed, 2's complement binary integer	GL_BYTE
+# GLubyte	8	Unsigned binary integer	GL_UNSIGNED_BYTE
+# GLshort	16	Signed, 2's complement binary integer	GL_SHORT
+# GLushort	16	Unsigned binary integer	GL_UNSIGNED_SHORT
+# GLint	32	Signed, 2's complement binary integer	GL_INT
+# GLuint	32	Unsigned binary integer	GL_UNSIGNED_INT
+# GLfixed	32	Signed, 2's complement 16.16 integer	GL_FIXED
+# GLint64	64	Signed, 2's complement binary integer	
+# GLuint64	64	Unsigned binary integer	
+# Int32	32	A non-negative binary integer, for sizes.	
+# UInt32	32	An OpenGL enumerator value	
+# GLintptr	ptrbits​1	Signed, 2's complement binary integer	
+# GLsizeiptr GLsizeiptr	ptrbits​1	Non-negative binary integer size, for memory offsets and ranges	
+# GLsync	ptrbits​1	Sync Object handle	
+# GLbitfield	32	A bitfield value	
+# GLhalf	16	An IEEE-754 floating-point value	GL_HALF_FLOAT
+# GLfloat	32	An IEEE-754 floating-point value	GL_FLOAT
+# GLclampf	32	An IEEE-754 floating-point value, clamped to the range [0,1]	
+# GLdouble	64	An IEEE-754 floating-point value	GL_DOUBLE
+# GLclampd	64	An IEEE-754 floating-point value, clamped to the range [0,1]	
+
+# typedef unsigned int UInt32;
+# typedef int Int32;
+
 lib LibGL
-  fun abs(genType x) : genType
-  fun abs(genIType x) : genIType
-  fun abs(genDType x) : genDType
-  fun acos(genType x) : genType
-  fun acosh(genType x) : genType
-  fun activeShaderProgram = glActiveShaderProgram(pipeline : GLuint, program : GLuint) : Void
-  fun activeTexture = glActiveTexture(texture : GLenum) : Void
-  fun all(x : bvec x) : bool
-  fun any(x : bvec x) : bool
-  fun asin(x : genType) : genType
-  fun asinh(x : genType) : genType
-  fun atan(y : genType, x : genType) : genType
-  fun atanh(x : genType) : genType
-  fun atomicAdd(mem : inout int, data : int) : int
-  fun atomicAdd(mem : inout uint, data : uint) : uint
-  fun atomicAnd(mem : inout int, data : int) : int
-  fun atomicAnd(mem : inout uint, data : uint) : uint
-  fun atomicCompSwap(mem : inout int, compare : uint, data : uint) : int
-  fun atomicCompSwap(mem : inout uint, compare : uint, data : uint) : uint
-  fun atomicCounter(c : atomic_uint) : uint
-  fun atomicCounterDecrement(c : atomic_uint) : uint
-  fun atomicCounterIncrement(c : atomic_uint) : uint
-  fun atomicExchange(mem : inout int, data : int) : int
-  fun atomicExchange(mem : inout uint, data : uint) : uint
-  fun atomicMax(inout int mem, int data) : int
-  fun atomicMax(inout uint mem, uint data) : uint
-  fun atomicMin(inout int mem, int data) : int
-  fun atomicMin(inout uint mem, uint data) : uint
-  fun atomicOr(inout int mem, int data) : int
-  fun atomicOr(inout uint mem, uint data) : uint
-  fun atomicXor(inout int mem, int data) : int
-  fun atomicXor(mem : inout uint, data : uint) : uint
-  fun attachShader = glAttachShader(program : GLuint, shader : GLuint) : Void
-  fun barrier(void) : Void
-  fun beginConditionalRender = glBeginConditionalRender(id : GLuint, mode : GLenum) : Void
-  fun endConditionalRender = glEndConditionalRender(void) : Void
-  fun beginQuery = glBeginQuery(target : GLenum, id : GLuint) : Void
-  fun endQuery = glEndQuery(target : GLenum) : Void
-  fun beginQueryIndexed = glBeginQueryIndexed(target : GLenum, index : GLuint, id : GLuint) : Void
-  fun endQueryIndexed = glEndQueryIndexed(target : GLenum, index : GLuint) : Void
-  fun beginTransformFeedback = glBeginTransformFeedback(primitiveMode : GLenum) : Void
-  fun endTransformFeedback = glEndTransformFeedback(void) : Void
-  fun bindAttribLocation = glBindAttribLocation(GLuint program, GLuint index, const GLchar *name) : Void
-  fun bindBuffer = glBindBuffer(GLenum target, GLuint buffer) : Void
-  fun bindBufferBase = glBindBufferBase(GLenum target, GLuint index, GLuint buffer) : Void
-  fun bindBufferRange = glBindBufferRange(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size) : Void
-  fun bindBuffersBase = glBindBuffersBase(GLenum target, GLuint first, GLsizei count, const GLuint *buffers) : Void
-  fun bindBuffersRange = glBindBuffersRange(GLenum target, GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLintptr *sizes) : Void
-  fun bindFragDataLocation = glBindFragDataLocation(GLuint program, GLuint colorNumber, const char *name) : Void
-  fun bindFragDataLocationIndexed = glBindFragDataLocationIndexed(GLuint program, GLuint colorNumber, GLuint index, const char *name) : Void
-  fun bindFramebuffer = glBindFramebuffer(GLenum target, GLuint framebuffer) : Void
-  fun bindImageTexture = glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format) : Void
-  fun bindImageTextures = glBindImageTextures(GLuint first, GLsizei count, const GLuint *textures) : Void
-  fun bindProgramPipeline = glBindProgramPipeline(GLuint pipeline) : Void
-  fun bindRenderbuffer = glBindRenderbuffer(GLenum target, GLuint renderbuffer) : Void
-  fun bindSampler = glBindSampler(GLuint unit, GLuint sampler) : Void
-  fun bindSamplers = glBindSamplers(GLuint first, GLsizei count, const GLuint *samplers) : Void
-  fun bindTexture = glBindTexture(GLenum target, GLuint texture) : Void
-  fun bindTextures = glBindTextures(GLuint first, GLsizei count, const GLuint *textures) : Void
-  fun bindTextureUnit = glBindTextureUnit(GLuint unit, GLuint texture) : Void
-  fun bindTransformFeedback = glBindTransformFeedback(	GLenum target, GLuint id) : Void
-  fun bindVertexArray = glBindVertexArray(array : GLuint) : Void
-  fun bindVertexBuffer = glBindVertexBuffer(bindingindex : GLuint, buffer : GLuint, offset : GLintptr, stride : GLsizei) : Void
-  fun vertexArrayVertexBuffer = glVertexArrayVertexBuffer(vaobj : GLuint, bindingindex : GLuint, buffer : GLuint, offset : GLintptr, stride : GLsizei) : Void
-  fun bitCount(value : genIType) : genIType
-  fun bitCount(value : genUType) : genIType
-  fun bitfieldExtract(value : genIType, offset : int, bits : int) : genIType
-  fun bitfieldExtract(value : genUType, offset : int, bits : int) : genUType
-  fun bitfieldInsert(base : genIType, insert : genIType, offset : int, bits : int) : genIType
-  fun bitfieldInsert(base : genUType, insert : genUType, offset : int, bits : int) : genUType
-  fun bitfieldReverse(value : genIType) : genIType
-  fun bitfieldReverse(value : genUType) : genUType
-  fun blendColor = glBlendColor(red : GLfloat, green : GLfloat, blue : GLfloat, alpha : GLfloat) : Void
-  fun blendEquation = glBlendEquation(mode : GLenum) : Void
-  fun blendEquationi = glBlendEquationi(buf : GLuint, mode : GLenum) : Void
-  fun blendEquation = glBlendEquation(mode : GLenum) : Void
-  fun blendEquationi = glBlendEquationi(buf : GLuint, mode : GLenum) : Void
-  fun blendEquationSeparate = glBlendEquationSeparate(modeRGB : GLenum, modeAlpha : GLenum) : Void
-  fun blendEquationSeparatei = glBlendEquationSeparatei(buf : GLuint, modeRGB : GLenum, modeAlpha : GLenum) : Void
-  fun blendFunc = glBlendFunc(sfactor : GLenum, dfactor : GLenum) : Void
-  fun blendFunci = glBlendFunci(buf : GLuint, sfactor : GLenum, dfactor : GLenum) : Void
-  fun blendFuncSeparate = glBlendFuncSeparate(srcRGB : GLenum, dstRGB : GLenum, srcAlpha : GLenum, dstAlpha : GLenum) : Void
-  fun blendFuncSeparatei = glBlendFuncSeparatei(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha) : Void
-  fun blitFramebuffer = glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter) : Void
-  fun blitNamedFramebuffer = glBlitNamedFramebuffer(GLuint readFramebuffer, GLuint drawFramebuffer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter) : Void
-  fun bufferData = glBufferData(GLenum target, GLsizeiptr size, const void *data, GLenum usage) : Void
-  fun namedBufferData = glNamedBufferData(GLuint buffer, GLsizeiptr size, const void *data, GLenum usage) : Void
-  fun bufferStorage = glBufferStorage(GLenum target, GLsizeiptr size, const void *data, GLbitfield flags) : Void
-  fun namedBufferStorage = glNamedBufferStorage(GLuint buffer, GLsizeiptr size, const void *data, GLbitfield flags) : Void
-  fun bufferSubData = glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const void *data) : Void
-  fun namedBufferSubData = glNamedBufferSubData(buffer : GLuint, offset : GLintptr, size : GLsizeiptr, *data : const void) : Void
-  fun ceil(x : genType) : genType
-  fun ceil(x : genDType) : genDType
-  fun checkFramebufferStatus = glCheckFramebufferStatus(target : GLenum) : GLenum
-  fun checkNamedFramebufferStatus = glCheckNamedFramebufferStatus(framebuffer : GLuint, target : GLenum) : GLenum
-  fun clamp(x : genType, minVal : genType, maxVal : genType) : genType
-  fun clamp(x : genType, minVal : float, maxVal : float) : genType
-  fun clamp(x : genDType, minVal : genDType, maxVal : genDType) : genDType
-  fun clamp(x : genDType, minVal : double, maxVal : double) : genDType
-  fun clamp(x : genIType, minVal : genIType, maxVal : genIType) : genIType
-  fun clamp(x : genIType, minVal : int, maxVal : int) : genIType
-  fun clamp(x : genUType, minVal : genUType, maxVal : genUType) : genUType
-  fun clamp(x : genUType, minVal : uint , maxVal : uint) : genUType
-  fun clampColor = glClampColor(target : GLenum, clamp : GLenum) : Void
-  fun clear = glClear(mask : GLbitfield) : Void
-  fun clearBufferiv = glClearBufferiv(buffer : GLenum, drawbuffer : GLint, *value : const GLint) : Void
-  fun clearBufferuiv = glClearBufferuiv(buffer : GLenum, drawbuffer : GLint, *value : const GLuint) : Void
-  fun clearBufferfv = glClearBufferfv(buffer : GLenum, drawbuffer : GLint, *value : const GLfloat) : Void
-  fun clearBufferfi = glClearBufferfi(buffer : GLenum, drawbuffer : GLint, depth : GLfloat, stencil : GLint) : Void
-  fun clearNamedFramebufferiv = glClearNamedFramebufferiv(framebuffer : GLuint, buffer : GLenum, drawbuffer : GLint, *value : const GLint) : Void
-  fun clearNamedFramebufferuiv = glClearNamedFramebufferuiv(framebuffer : GLuint, buffer : GLenum, drawbuffer : GLint, *value : const GLuint) : Void
-  fun clearNamedFramebufferfv = glClearNamedFramebufferfv(framebuffer : GLuint, buffer : GLenum, drawbuffer : GLint, *value : const GLfloat) : Void
-  fun clearNamedFramebufferfi = glClearNamedFramebufferfi(framebuffer : GLuint, buffer : GLenum, drawbuffer : GLint, depth : GLfloat, stencil : GLint) : Void
-  fun clearBufferData = glClearBufferData(target : GLenum, internalformat : GLenum, format : GLenum, type : GLenum, *data : const void) : Void
-  fun clearNamedBufferData = glClearNamedBufferData(buffer : GLuint, internalformat : GLenum, format : GLenum, type : GLenum, *data : const void) : Void
-  fun clearBufferSubData = glClearBufferSubData(target : GLenum, internalformat : GLenum, offset : GLintptr, size : GLsizeiptr, format : GLenum, type : GLenum, *data : const void) : Void
-  fun clearNamedBufferSubData = glClearNamedBufferSubData(buffer : GLuint, internalformat : GLenum, offset : GLintptr, size : GLsizeiptr, format : GLenum, type : GLenum, *data : const void) : Void
-  fun clearColor = glClearColor(red : GLfloat, green : GLfloat, blue : GLfloat, alpha : GLfloat) : Void
-  fun clearDepth = glClearDepth(depth : GLdouble) : Void
-  fun clearDepthf = glClearDepthf(depth : GLfloat) : Void
-  fun clearNamedBufferData = glClearNamedBufferData(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const void *data) : Void
-  fun clearBufferSubData = glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void *data) : Void
-  fun clearNamedBufferSubData = glClearNamedBufferSubData(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void *data) : Void
-  fun clearBufferiv = glClearBufferiv(GLenum buffer, GLint drawbuffer, const GLint *value) : Void
-  fun clearBufferuiv = glClearBufferuiv(GLenum buffer, GLint drawbuffer, const GLuint *value) : Void
-  fun clearBufferfv = glClearBufferfv(GLenum buffer, GLint drawbuffer, const GLfloat *value) : Void
-  fun clearBufferfi = glClearBufferfi(GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil) : Void
-  fun clearNamedFramebufferiv = glClearNamedFramebufferiv(GLuint framebuffer, GLenum buffer, GLint drawbuffer, const GLint *value) : Void
-  fun clearNamedFramebufferuiv = glClearNamedFramebufferuiv(GLuint framebuffer, GLenum buffer, GLint drawbuffer, const GLuint *value) : Void
-  fun clearNamedFramebufferfv = glClearNamedFramebufferfv(GLuint framebuffer, GLenum buffer, GLint drawbuffer, const GLfloat *value) : Void
-  fun clearNamedFramebufferfi = glClearNamedFramebufferfi(GLuint framebuffer, GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil) : Void
-  fun clearStencil = glClearStencil(GLint s) : Void
-  fun clearTexImage = glClearTexImage(GLuint texture, GLint level, GLenum format, GLenum type, const void *data) : Void
-  fun clearTexSubImage = glClearTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void *data) : Void
-  fun clientWaitSync = glClientWaitSync(sync : GLsync, flags : GLbitfield, timeout : GLuint64) : GLenum
-  fun clipControl = glClipControl(GLenum origin, GLenum depth) : Void
-  fun colorMask = glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha) : Void
-  fun colorMaski = glColorMaski(GLuint buf, GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha) : Void
-  fun compileShader = glCompileShader(GLuint shader) : Void
-  fun compressedTexImage1D = glCompressedTexImage1D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void *data) : Void
-  fun compressedTexImage2D = glCompressedTexImage2D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void *data) : Void
-  fun compressedTexImage3D = glCompressedTexImage3D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void *data) : Void
-  fun compressedTexSubImage1D = glCompressedTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void *data) : Void
-  fun compressedTexSubImage2D = glCompressedTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void *data) : Void
-  fun compressedTexSubImage3D = glCompressedTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void *data) : Void
-  fun compressedTextureSubImage1D = glCompressedTextureSubImage1D(GLuint texture, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void *data) : Void
-  fun compressedTextureSubImage2D = glCompressedTextureSubImage2D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void *data) : Void
-  fun compressedTextureSubImage3D = glCompressedTextureSubImage3D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void *data) : Void
-  fun copyBufferSubData = glCopyBufferSubData(GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size) : Void
-  fun copyNamedBufferSubData = glCopyNamedBufferSubData(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size) : Void
-  fun copyImageSubData = glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth) : Void
-  fun copyTexImage1D = glCopyTexImage1D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border) : Void
-  fun copyTexImage2D = glCopyTexImage2D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border) : Void
-  fun copyTexSubImage1D = glCopyTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width) : Void
-  fun copyTexSubImage2D = glCopyTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height) : Void
-  fun copyTexSubImage3D = glCopyTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height) : Void
-  fun copyTextureSubImage1D = glCopyTextureSubImage1D(GLuint texture, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width) : Void
-  fun copyTextureSubImage2D = glCopyTextureSubImage2D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height) : Void
-  fun copyTextureSubImage3D = glCopyTextureSubImage3D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height) : Void
-  fun cos(angle : genType) : genType
-  fun cosh(x : genType) : genType
-  fun createBuffers = glCreateBuffers(GLsizei n, GLuint *buffers) : Void
-  fun createFramebuffers = glCreateFramebuffers(GLsizei n, GLuint *framebuffers) : Void
-  fun createProgram = glCreateProgram(void) : GLuint
-  fun createProgramPipelines = glCreateProgramPipelines(GLsizei n, GLuint *pipelines) : Void
-  fun createQueries = glCreateQueries(GLenum target, GLsizei n, GLuint *ids) : Void
-  fun createRenderbuffers = glCreateRenderbuffers(GLsizei n, GLuint *renderbuffers) : Void
-  fun createSamplers = glCreateSamplers(GLsizei n, GLuint *samplers) : Void
-  fun createShader = glCreateShader(GLenum shaderType) : GLuint
-  fun createShaderProgramv = glCreateShaderProgramv(GLenum type, GLsizei count, const char **strings) : GLuint
-  fun createTextures = glCreateTextures(GLenum target, GLsizei n, GLuint *textures) : Void
-  fun createTransformFeedbacks = glCreateTransformFeedbacks(GLsizei n, GLuint *ids) : Void
-  fun createVertexArrays = glCreateVertexArrays(GLsizei n, GLuint *arrays) : Void
-  fun cross(vec3 x, vec3 y) : vec3
-  fun cross(dvec3 x, dvec3 y) : dvec3
-  fun glCullFace(mode : GLenum) : Void
-  fun debugMessageCallback = glDebugMessageCallback(DEBUGPROC callback, const void *userParam) : Void
-  fun debugMessageControl = glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled) : Void
-  fun debugMessageInsert = glDebugMessageInsert(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const char *message) : Void
-  fun degrees(radians : genType) : genType
-  fun deleteBuffers = glDeleteBuffers(GLsizei n, const GLuint *buffers) : Void
-  fun deleteFramebuffers = glDeleteFramebuffers(GLsizei n, GLuint *framebuffers) : Void
-  fun deleteProgram = glDeleteProgram(GLuint program) : Void
-  fun deleteProgramPipelines = glDeleteProgramPipelines(GLsizei n,const GLuint *pipelines) : Void
-  fun deleteQueries = glDeleteQueries(GLsizei n, const GLuint *ids) : Void
-  fun deleteRenderbuffers = glDeleteRenderbuffers(GLsizei n, GLuint *renderbuffers) : Void
-  fun deleteSamplers = glDeleteSamplers(GLsizei n, const GLuint * samplers) : Void
-  fun deleteShader = glDeleteShader(GLuint shader) : Void
-  fun deleteSync = glDeleteSync(GLsync sync) : Void
-  fun deleteTextures = glDeleteTextures(GLsizei n, const GLuint * textures) : Void
-  fun deleteTransformFeedbacks = glDeleteTransformFeedbacks(GLsizei n, const GLuint *ids) : Void
-  fun deleteVertexArrays = glDeleteVertexArrays(GLsizei n, const GLuint *arrays) : Void
-  fun depthFunc = glDepthFunc(GLenum func) : Void
-  fun depthMask = glDepthMask(GLboolean flag) : Void
-  fun depthRange = glDepthRange(GLdouble nearVal, GLdouble farVal) : Void
-  fun depthRangef = glDepthRangef(GLfloat nearVal, GLfloat farVal) : Void
-  fun depthRangeArrayv = glDepthRangeArrayv(GLuint first, GLsizei count, const GLdouble *v) : Void
-  fun depthRangeIndexed = glDepthRangeIndexed(GLuint index, GLdouble nearVal, GLdouble farVal) : Void
-  fun detachShader = glDetachShader(GLuint program, GLuint shader) : Void
-  fun determinant(mat2 m) : float
-  fun determinant(mat3 m) : float
-  fun determinant(mat4 m) : float
-  fun determinant(dmat2 m) : double
-  fun determinant(dmat3 m) : double
-  fun determinant(dmat4 m) : double
-  fun dFdx(genType p) : genType
-  fun dFdy(genType p) : genType
-  fun dFdxCoarse(genType p) : genType
-  fun dFdyCoarse(genType p) : genType
-  fun dFdxFine(genType p) : genType
-  fun dFdyFine(genType p) : genType
-  fun enable = glEnable(GLenum cap) : Void
-  fun disable = glDisable(GLenum cap) : Void
-  fun enablei = glEnablei(GLenum cap, GLuint index) : Void
-  fun disablei = glDisablei(GLenum cap, GLuint index) : Void
-  fun enableVertexAttribArray = glEnableVertexAttribArray(GLuint index) : Void
-  fun disableVertexAttribArray = glDisableVertexAttribArray(GLuint index) : Void
-  fun enableVertexArrayAttrib = glEnableVertexArrayAttrib(GLuint vaobj, GLuint index) : Void
-  fun disableVertexArrayAttrib = glDisableVertexArrayAttrib(GLuint vaobj, GLuint index) : Void
-  fun dispatchCompute = glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z) : Void
-  fun dispatchComputeIndirect = glDispatchComputeIndirect(GLintptr indirect) : Void
-  fun distance(genType p0, genType p1) : float
-  fun distance(genDType p0, genDType p1) : double
-  fun dot(genType x, genType y) : float
-  fun dot(genDType x, genDType y) : double
-  fun drawArrays = glDrawArrays(GLenum mode, GLint first, GLsizei count) : Void
-  fun drawArraysIndirect = glDrawArraysIndirect(GLenum mode, const *indirect) : Void
-  fun drawArraysInstanced = glDrawArraysInstanced(GLenum mode, GLint first, GLsizei count, GLsizei instancecount) : Void
-  fun drawArraysInstancedBaseInstance = glDrawArraysInstancedBaseInstance(GLenum mode, GLint first, GLsizei count, GLsizei instancecount, GLuint baseinstance) : Void
-  fun drawBuffer = glDrawBuffer(GLenum buf) : Void
-  fun namedFramebufferDrawBuffer = glNamedFramebufferDrawBuffer(GLuint framebuffer, GLenum buf) : Void
-  fun drawBuffers = glDrawBuffers(GLsizei n, const GLenum *bufs) : Void
-  fun namedFramebufferDrawBuffers = glNamedFramebufferDrawBuffers(GLuint framebuffer, GLsizei n, const GLenum *bufs) : Void
-  fun drawElements = glDrawElements(GLenum mode, GLsizei count, GLenum type, const * indices) : Void
-  fun drawElementsBaseVertex = glDrawElementsBaseVertex(GLenum mode, GLsizei count, GLenum type, *indices, GLint basevertex) : Void
-  fun drawElementsIndirect = glDrawElementsIndirect(GLenum mode, GLenum type, const *indirect) : Void
-  fun drawElementsInstanced = glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const * indices, GLsizei instancecount) : Void
-  fun drawElementsInstancedBaseInstance = glDrawElementsInstancedBaseInstance(GLenum mode, GLsizei count, GLenum type, const * indices, GLsizei instancecount, GLuint baseinstance) : Void
-  fun drawElementsInstancedBaseVertex = glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, *indices, GLsizei instancecount, GLint basevertex) : Void
-  fun drawElementsInstancedBaseVertexBaseInstance = glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei count, GLenum type, *indices, GLsizei instancecount, GLint basevertex, GLuint baseinstance) : Void
-  fun drawRangeElements = glDrawRangeElements(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const * indices) : Void
-  fun drawRangeElementsBaseVertex = glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, *indices, GLint basevertex) : Void
-  fun drawTransformFeedback = glDrawTransformFeedback(GLenum mode, GLuint id) : Void
-  fun drawTransformFeedbackInstanced = glDrawTransformFeedbackInstanced(GLenum mode, GLuint id, GLsizei instancecount) : Void
-  fun drawTransformFeedbackStream = glDrawTransformFeedbackStream(GLenum mode, GLuint id, GLuint stream) : Void
-  fun drawTransformFeedbackStreamInstanced = glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint stream, GLsizei instancecount) : Void
-  fun emitStreamVertex(stream : int) : Void
-  fun emitVertex(Void) : Void
-  fun enable = glEnable(cap : GLenum) : Void
-  fun disable = glDisable(cap : GLenum) : Void
-  fun enablei = glEnablei(cap : GLenum, index : GLuint) : Void
-  fun disablei = glDisablei(cap : GLenum, index : GLuint) : Void
-  fun enableVertexAttribArray = glEnableVertexAttribArray(GLuint index) : Void
-  fun disableVertexAttribArray = glDisableVertexAttribArray(GLuint index) : Void
-  fun enableVertexArrayAttrib = glEnableVertexArrayAttrib(GLuint vaobj, GLuint index) : Void
-  fun disableVertexArrayAttrib = glDisableVertexArrayAttrib(GLuint vaobj, GLuint index) : Void
-  fun beginConditionalRender = glBeginConditionalRender(GLuint id, GLenum mode) : Void
-  fun endConditionalRender = glEndConditionalRender(void) : Void
-  fun endPrimitive(void) : Void
-  fun beginQuery = glBeginQuery(GLenum target, GLuint id) : Void
-  fun endQuery = glEndQuery(GLenum target) : Void
-  fun beginQueryIndexed = glBeginQueryIndexed(GLenum target, GLuint index, GLuint id) : Void
-  fun endQueryIndexed = glEndQueryIndexed(GLenum target, GLuint index) : Void
-  fun endStreamPrimitive(int stream) : Void
-  fun beginTransformFeedback = glBeginTransformFeedback(GLenum primitiveMode) : Void
-  fun endTransformFeedback = glEndTransformFeedback(void) : Void
-  fun equal(x : vec, y : vec) : bvec
-  fun equal(x : ivec, y : ivec) : bvec
-  fun equal(x : uvec, y : uvec) : bvec
-  fun exp(x : genType) : genType
-  fun exp2(x : genType) : genType
-  fun faceforward(genType N, genType I, genType Nref) : genType
-  fun faceforward(genDType N, genDType I, genDType Nref) : genDType
-  fun fenceSync = glFenceSync(GLenum condition, GLbitfield flags) : GLsync
-  fun findLSB(genIType value) : genIType
-  fun findLSB(genUType value) : genIType
-  fun findMSB(genIType value) : genIType
-  fun findMSB(genUType value) : genIType
-  fun finish = glFinish(Void) : Void
-  fun floatBitsToInt(genType x) : genIType
-  fun floatBitsToUint(genType x) : genUType
-  fun floor(genType x) : genType
-  fun floor(genDType x) : genDType
-  fun flush = glFlush(Void) : Void
-  fun flushMappedBufferRange = glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length) : Void
-  fun flushMappedNamedBufferRange = glFlushMappedNamedBufferRange(GLuint buffer, GLintptr offset, GLsizeiptr length) : Void
-  fun fma(genType a, genType b, genType c) : genType
-  fun fma(genDType a, genDType b, genDType c) : genDType
-  fun fract(genType x) : genType
-  fun fract(genDType x) : genDType
-  fun framebufferParameteri = glFramebufferParameteri(GLenum target, GLenum pname, GLint param) : Void
-  fun namedFramebufferParameteri = glNamedFramebufferParameteri(GLuint framebuffer, GLenum pname, GLint param) : Void
-  fun framebufferRenderbuffer = glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer) : Void
-  fun namedFramebufferRenderbuffer = glNamedFramebufferRenderbuffer(GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer) : Void
-  fun framebufferTexture = glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level) : Void
-  fun framebufferTexture1D = glFramebufferTexture1D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level) : Void
-  fun framebufferTexture2D = glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level) : Void
-  fun framebufferTexture3D = glFramebufferTexture3D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer) : Void
-  fun namedFramebufferTexture = glNamedFramebufferTexture(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level) : Void
-  fun framebufferTextureLayer = glFramebufferTextureLayer(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer) : Void
-  fun namedFramebufferTextureLayer = glNamedFramebufferTextureLayer(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer) : Void
-  fun frexp(x : genType, exp : out genIType) : genType
-  fun frexp(x : genDType, exp : out genIType) : genDType
-  fun frontFace = glFrontFace(mode : GLenum) : void
-  fun fwidth(p : genType) : genType
-  fun fwidthCoarse(p : genType) : genType
-  fun fwidthFine(p : genType) : genType
-  fun genBuffers = glGenBuffers(GLsizei n, GLuint *buffers) : Void
-  fun generateMipmap = glGenerateMipmap(GLenum target) : Void
-  fun generateTextureMipmap = glGenerateTextureMipmap(GLuint texture) : Void
-  fun genFramebuffers = glGenFramebuffers(GLsizei n, GLuint *ids) : Void
-  fun genProgramPipelines = glGenProgramPipelines(GLsizei n, GLuint *pipelines) : Void
-  fun genQueries = glGenQueries(GLsizei n, GLuint *ids) : Void
-  fun genRenderbuffers = glGenRenderbuffers(GLsizei n, GLuint *renderbuffers) : Void
-  fun genSamplers = glGenSamplers(GLsizei n, GLuint *samplers) : Void
-  fun genTextures = glGenTextures(GLsizei n, GLuint *textures) : Void
-  fun genTransformFeedbacks = glGenTransformFeedbacks(GLsizei n, GLuint *ids) : Void
-  fun genVertexArrays = glGenVertexArrays(GLsizei n, GLuint *arrays) : Void
-  fun getBooleanv = glGetBooleanv(GLenum pname, GLboolean *data) : Void
-  fun getDoublev = glGetDoublev(GLenum pname, GLdouble *data) : Void
-  fun getFloatv = glGetFloatv(GLenum pname, GLfloat *data) : Void
-  fun getIntegerv = glGetIntegerv(GLenum pname, GLint *data) : Void
-  fun getInteger64v = glGetInteger64v(GLenum pname, GLint64 *data) : Void
-  fun getBooleani_v = glGetBooleani_v(GLenum target, GLuint index, GLboolean *data) : Void
-  fun getIntegeri_v = glGetIntegeri_v(GLenum target, GLuint index, GLint * data) : Void
-  fun getFloati_v = glGetFloati_v(GLenum target, GLuint index, GLfloat *data) : Void
-  fun getDoublei_v = glGetDoublei_v(GLenum target, GLuint index, GLdouble *data) : Void
-  fun getInteger64i_v = glGetInteger64i_v(GLenum target, GLuint index, GLint64 *data) : Void
-  fun getActiveAtomicCounterBufferiv = glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum pname, GLint *params) : Void
-  fun getActiveAttrib = glGetActiveAttrib(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name) : Void
-  fun getActiveSubroutineName = glGetActiveSubroutineName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name) : Void
-  fun getActiveSubroutineUniformiv = glGetActiveSubroutineUniformiv(GLuint program, GLenum shadertype, GLuint index, GLenum pname, GLint *values) : Void
-  fun getActiveSubroutineUniformName = glGetActiveSubroutineUniformName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name) : Void
-  fun getActiveUniform = glGetActiveUniform(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name) : Void
-  fun getActiveUniformBlockiv = glGetActiveUniformBlockiv(GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint *params) : Void
-  fun getActiveUniformBlockName = glGetActiveUniformBlockName(GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformBlockName) : Void
-  fun getActiveUniformName = glGetActiveUniformName(GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformName) : Void
-  fun getActiveUniformsiv = glGetActiveUniformsiv(GLuint program, GLsizei uniformCount, const GLuint *uniformIndices, GLenum pname, GLint *params) : Void
-  fun getAttachedShaders = glGetAttachedShaders(GLuint program, GLsizei maxCount, GLsizei *count, GLuint *shaders) : Void
-  fun getAttribLocation = glGetAttribLocation(GLuint program, const GLchar *name) : GLint
-  fun getBooleanv = glGetBooleanv(GLenum pname, GLboolean *data) : Void
-  fun getDoublev = glGetDoublev(GLenum pname, GLdouble *data) : Void
-  fun getFloatv = glGetFloatv(GLenum pname, GLfloat *data) : Void
-  fun getIntegerv = glGetIntegerv(GLenum pname, GLint *data) : Void
-  fun getInteger64v = glGetInteger64v(GLenum pname, GLint64 *data) : Void
-  fun getBooleani_v = glGetBooleani_v(GLenum target, GLuint index, GLboolean *data) : Void
-  fun getIntegeri_v = glGetIntegeri_v(GLenum target, GLuint index, GLint *data) : Void
-  fun getFloati_v = glGetFloati_v(GLenum target, GLuint index, GLfloat *data) : Void
-  fun getDoublei_v = glGetDoublei_v(GLenum target, GLuint index, GLdouble * data) : Void
-  fun getInteger64i_v = glGetInteger64i_v(GLenum target, GLuint index, GLint64 *data) : Void
-  fun getAttribLocation = glGetAttribLocation(GLuint program, const GLchar *name) : GLint
-  fun getBufferParameteriv = glGetBufferParameteriv(GLenum target, GLenum value, GLint *data) : Void
-  fun getBufferParameteri64v = glGetBufferParameteri64v(GLenum target, GLenum value, GLint64 *data) : Void
-  fun getNamedBufferParameteriv = glGetNamedBufferParameteriv(GLuint buffer, GLenum pname, GLint *params) : Void
-  fun getNamedBufferParameteri64v = glGetNamedBufferParameteri64v(GLuint buffer, GLenum pname, GLint64 *params) : Void
-  fun getBufferPointerv = glGetBufferPointerv(GLenum target, GLenum pname, void **params) : Void
-  fun getNamedBufferPointerv = glGetNamedBufferPointerv(GLuint buffer, GLenum pname, void **params) : Void
-  fun getBufferSubData = glGetBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, void *data) : Void
-  fun getNamedBufferSubData = glGetNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, void *data) : Void
-  fun getFramebufferAttachmentParameteriv = glGetFramebufferAttachmentParameteriv(GLenum target, GLenum attachment, GLenum pname, GLint *params) : Void
-  fun getNamedFramebufferAttachmentParameteriv = glGetNamedFramebufferAttachmentParameteriv(GLuint framebuffer, GLenum attachment, GLenum pname, GLint *params) : Void
-  fun getRenderbufferParameteriv = glGetRenderbufferParameteriv(GLenum target, GLenum pname, GLint *params) : Void
-  fun getNamedRenderbufferParameteriv = glGetNamedRenderbufferParameteriv(GLuint renderbuffer, GLenum pname, GLint *params) : Void
-  fun getCompressedTexImage = glGetCompressedTexImage(GLenum target, GLint level, void *pixels) : Void
-  fun getnCompressedTexImage = glGetnCompressedTexImage(GLenum target, GLint level, GLsizei bufSize, void *pixels) : Void
-  fun getCompressedTextureImage = glGetCompressedTextureImage(GLuint texture, GLint level, GLsizei bufSize, void *pixels) : Void
-  fun getTexImage = glGetTexImage(GLenum target, GLint level, GLenum format, GLenum type, void *pixels) : Void
-  fun getnTexImage = glGetnTexImage(GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, void *pixels) : Void
-  fun getTextureImage = glGetTextureImage(GLuint texture, GLint level, GLenum format, GLenum type, GLsizei bufSize, void *pixels) : Void
-  fun getTexLevelParameterfv = glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat *params) : Void
-  fun getTexLevelParameteriv = glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLint *params) : Void
-  fun getTextureLevelParameterfv = glGetTextureLevelParameterfv(GLuint texture, GLint level, GLenum pname, GLfloat *params) : Void
-  fun getTextureLevelParameteriv = glGetTextureLevelParameteriv(GLuint texture, GLint level, GLenum pname, GLint *params) : Void
-  fun getTexParameterfv = glGetTexParameterfv(GLenum target, GLenum pname, GLfloat *params) : Void
-  fun getTexParameteriv = glGetTexParameteriv(GLenum target, GLenum pname, GLint *params) : Void
-  fun getTexParameterIiv = glGetTexParameterIiv(GLenum target, GLenum pname, GLint *params) : Void
-  fun getTexParameterIuiv = glGetTexParameterIuiv(GLenum target, GLenum pname, GLuint *params) : Void
-  fun getTextureParameterfv = glGetTextureParameterfv(GLuint texture, GLenum pname, GLfloat *params) : Void
-  fun getTextureParameteriv = glGetTextureParameteriv(GLuint texture, GLenum pname, GLint *params) : Void
-  fun getTextureParameterIiv = glGetTextureParameterIiv(GLuint texture, GLenum pname, GLint *params) : Void
-  fun getTextureParameterIuiv = glGetTextureParameterIuiv(GLuint texture, GLenum pname, GLuint *params) : Void
-  fun getTexImage = glGetTexImage(GLenum target, GLint level, GLenum format, GLenum type, void *pixels) : Void
-  fun getnTexImage = glGetnTexImage(GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, void *pixels) : Void
-  fun getTextureImage = glGetTextureImage(GLuint texture, GLint level, GLenum format, GLenum type, GLsizei bufSize, void *pixels) : Void
-  fun getTexLevelParameterfv = glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat *params) : Void
-  fun getTexLevelParameteriv = glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLint *params) : Void
-  fun getTextureLevelParameterfv = glGetTextureLevelParameterfv(GLuint texture, GLint level, GLenum pname, GLfloat *params) : Void
-  fun getTextureLevelParameteriv = glGetTextureLevelParameteriv(GLuint texture, GLint level, GLenum pname, GLint *params) : Void
-
+  fun abs(x : Float32) : Float32
+  # fun abs(x : Int32) : Int32
+  # fun abs(x : Float64) : Float64
+  # fun acos(x : Float32) : Float32
+  # fun acosh(x : Float32) : Float32
+  fun active_shader_program = glActiveShaderProgram(pipeline : UInt32, program : UInt32) : Void
+  fun active_texture = glActiveTexture(texture : UInt32) : Void
+  # fun all(x : bvec x) : Bool
+  # fun any(x : bvec x) : Bool
+  # fun asin(x : Float32) : Float32
+  # fun asinh(x : Float32) : Float32
+  # fun atan(y : Float32, x : Float32) : Float32
+  # fun atanh(x : Float32) : Float32
+  # fun atomicAdd(mem : inout int, data : int) : Int32
+  # fun atomicAdd(mem : inout uint, data : uint) : UInt32
+  # fun atomicAnd(mem : inout int, data : int) : Int32
+  # fun atomicAnd(mem : inout uint, data : uint) : UInt32
+  # fun atomicCompSwap(mem : inout int, compare : uint, data : uint) : Int32
+  # fun atomicCompSwap(mem : inout uint, compare : uint, data : uint) : UInt32
+  # fun atomicCounter(c : atomic_uint) : UInt32
+  # fun atomicCounterDecrement(c : atomic_uint) : UInt32
+  # fun atomicCounterIncrement(c : atomic_uint) : UInt32
+  # fun atomicExchange(mem : inout int, data : int) : Int32
+  # fun atomicExchange(mem : inout uint, data : uint) : UInt32
+  # fun atomicMax(inout int mem, int data) : Int32
+  # fun atomicMax(inout uint mem, uint data) : UInt32
+  # fun atomicMin(inout int mem, int data) : Int32
+  # fun atomicMin(inout uint mem, uint data) : UInt32
+  # fun atomicOr(inout int mem, int data) : Int32
+  # fun atomicOr(inout uint mem, uint data) : UInt32
+  # fun atomicXor(inout int mem, int data) : Int32
+  # fun atomicXor(mem : inout uint, data : uint) : UInt32
+  fun attach_shader = glAttachShader(program : UInt32, shader : UInt32) : Void
+  fun barrier : Void
+  fun begin_conditional_render = glBeginConditionalRender(id : UInt32, mode : UInt32) : Void
+  fun end_conditional_render = glEndConditionalRender : Void
+  fun begin_query = glBeginQuery(target : UInt32, id : UInt32) : Void
+  fun end_query = glEndQuery(target : UInt32) : Void
+  fun begin_query_indexed = glBeginQueryIndexed(target : UInt32, index : UInt32, id : UInt32) : Void
+  fun end_query_indexed = glEndQueryIndexed(target : UInt32, index : UInt32) : Void
+  fun begin_transform_feedback = glBeginTransformFeedback(primitiveMode : UInt32) : Void
+  fun end_transform_feedback = glEndTransformFeedback : Void
+  fun bind_attrib_location = glBindAttribLocation(program : UInt32, index : UInt32, name : UInt8*) : Void
+  fun bind_buffer = glBindBuffer(target : UInt32, buffer : UInt32) : Void
+  fun bind_buffer_base = glBindBufferBase(target : UInt32, index : UInt32, buffer : UInt32) : Void
+  # fun bind_buffer_range = glBindBufferRange(target : UInt32, index : UInt32, buffer : UInt32, offset : GLintptr, size : GLsizeiptr) : Void
+  fun bind_buffers_base = glBindBuffersBase(target : UInt32, first : UInt32, count : Int32, buffers : UInt32*) : Void
+  # fun bind_buffers_range = glBindBuffersRange(target : UInt32, first : UInt32, count : Int32, buffers : UInt32*, offsets : GLintptr*, sizes : GLintptr*) : Void
+  fun bind_frag_data_location = glBindFragDataLocation(program : UInt32, colorNumber : UInt32, name : UInt8*) : Void
+  fun bind_frag_data_location_indexed = glBindFragDataLocationIndexed(program : UInt32, colorNumber : UInt32, index : UInt32, name : UInt8*) : Void
+  fun bind_framebuffer = glBindFramebuffer(target : UInt32, framebuffer : UInt32) : Void
+  fun bind_image_texture = glBindImageTexture(unit : UInt32, texture : UInt32, level : Int32, layered : Bool, layer : Int32, access : UInt32, format : UInt32) : Void
+  fun bind_image_textures = glBindImageTextures(first : UInt32, count : Int32, textures : UInt32*) : Void
+  fun bind_program_pipeline = glBindProgramPipeline(pipeline : UInt32) : Void
+  fun bind_renderbuffer = glBindRenderbuffer(target : UInt32, renderbuffer : UInt32) : Void
+  fun bind_sampler = glBindSampler(unit : UInt32, sampler : UInt32) : Void
+  fun bind_samplers = glBindSamplers(first : UInt32, count : Int32, samplers : UInt32*) : Void
+  fun bind_texture = glBindTexture(target : UInt32, texture : UInt32) : Void
+  fun bind_textures = glBindTextures(first : UInt32, count : Int32, textures : UInt32*) : Void
+  fun bind_texture_unit = glBindTextureUnit(unit : UInt32, texture : UInt32) : Void
+  fun bind_transform_feedback = glBindTransformFeedback(target : UInt32, id : UInt32) : Void
+  fun bind_vertex_array = glBindVertexArray(array : UInt32) : Void
+  # fun bind_vertex_buffer = glBindVertexBuffer(bindingindex : UInt32, buffer : UInt32, offset : GLintptr, stride : Int32) : Void
+  # fun vertex_array_vertex_buffer = glVertexArrayVertexBuffer(vaobj : UInt32, bindingindex : UInt32, buffer : UInt32, offset : GLintptr, stride : Int32) : Void
+  # fun bit_count = bitCount(value : genIType) : genIType
+  # fun bit_count = bitCount(value : genUType) : genIType
+  fun bitfield_extract = bitfieldExtract(value : Int32, offset : Int32, bits : Int32) : Int32
+  # fun bitfield_extract = bitfieldExtract(value : UInt32, offset : Int32, bits : Int32) : UInt32
+  # fun bitfield_insert = bitfieldInsert(base : genIType, insert : genIType, offset : Int32, bits : Int32) : genIType
+  # fun bitfield_insert = bitfieldInsert(base : genUType, insert : genUType, offset : Int32, bits : Int32) : genUType
+  # fun bitfield_reverse = bitfieldReverse(value : genIType) : genIType
+  # fun bitfield_reverse = bitfieldReverse(value : genUType) : genUType
+  fun blend_color = glBlendColor(red : Float32, green : Float32, blue : Float32, alpha : Float32) : Void
+  fun blend_equation = glBlendEquation(mode : UInt32) : Void
+  fun blend_equation_i = glBlendEquationi(buf : UInt32, mode : UInt32) : Void
+  fun blend_equation_separate = glBlendEquationSeparate(modeRGB : UInt32, modeAlpha : UInt32) : Void
+  fun blend_equation_separate_i = glBlendEquationSeparatei(buf : UInt32, modeRGB : UInt32, modeAlpha : UInt32) : Void
+  fun blend_func = glBlendFunc(sfactor : UInt32, dfactor : UInt32) : Void
+  fun blend_func_i = glBlendFunci(buf : UInt32, sfactor : UInt32, dfactor : UInt32) : Void
+  fun blend_func_separate = glBlendFuncSeparate(srcRGB : UInt32, dstRGB : UInt32, srcAlpha : UInt32, dstAlpha : UInt32) : Void
+  fun blend_func_separate_i = glBlendFuncSeparatei(buf : UInt32, srcRGB : UInt32, dstRGB : UInt32, srcAlpha : UInt32, dstAlpha : UInt32) : Void
+  # fun blit_framebuffer = glBlitFramebuffer(srcX0 : Int32, srcY0 : Int32, srcX1 : Int32, srcY1 : Int32, dstX0 : Int32, dstY0 : Int32, dstX1 : Int32, dstY1 : Int32, mask : GLbitfield, filter : UInt32) : Void
+  # fun blit_named_framebuffer = glBlitNamedFramebuffer(readFramebuffer : UInt32, drawFramebuffer : UInt32, srcX0 : Int32, srcY0 : Int32, srcX1 : Int32, srcY1 : Int32, dstX0 : Int32, dstY0 : Int32, dstX1 : Int32, dstY1 : Int32, mask : GLbitfield, filter : UInt32) : Void
+  # fun buffer_data = glBufferData(target : UInt32, size : GLsizeiptr, data : Void*, usage : UInt32) : Void
+  # fun named_buffer_data = glNamedBufferData(buffer : UInt32, size : GLsizeiptr, data : Void*, usage : UInt32) : Void
+  # fun buffer_storage = glBufferStorage(target : UInt32, size : GLsizeiptr, data : Void*, flags : GLbitfield) : Void
+  # fun named_buffer_storage = glNamedBufferStorage(buffer : UInt32, size : GLsizeiptr, data : Void*, flags : GLbitfield) : Void
+  # fun buffer_sub_data = glBufferSubData(target : UInt32, offset : GLintptr, size : GLsizeiptr, data : Void*) : Void
+  # fun named_buffer_sub_data = glNamedBufferSubData(buffer : UInt32, offset : GLintptr, size : GLsizeiptr, data : Void*) : Void
+  # fun ceil(x : genType) : genType
+  # fun ceil(x : genDType) : genDType
+  fun check_framebuffer_status = glCheckFramebufferStatus(target : UInt32) : UInt32
+  fun check_named_framebuffer_status = glCheckNamedFramebufferStatus(framebuffer : UInt32, target : UInt32) : UInt32
+  # fun clamp(x : genType, minVal : genType, maxVal : genType) : genType
+  # fun clamp(x : genType, minVal : float, maxVal : float) : genType
+  # fun clamp(x : genDType, minVal : genDType, maxVal : genDType) : genDType
+  # fun clamp(x : genDType, minVal : double, maxVal : double) : genDType
+  # fun clamp(x : genIType, minVal : genIType, maxVal : genIType) : genIType
+  # fun clamp(x : genIType, minVal : int, maxVal : int) : genIType
+  # fun clamp(x : genUType, minVal : genUType, maxVal : genUType) : genUType
+  # fun clamp(x : genUType, minVal : uint , maxVal : uint) : genUType
+  fun clamp_color = glClampColor(target : UInt32, clamp : UInt32) : Void
+  # fun clear = glClear(mask : GLbitfield) : Void
+  fun clear_buffer_iv = glClearBufferiv(buffer : UInt32, drawbuffer : Int32, value : Int32*) : Void
+  fun clear_buffer_uiv = glClearBufferuiv(buffer : UInt32, drawbuffer : Int32, value : UInt32*) : Void
+  fun clear_buffer_fv = glClearBufferfv(buffer : UInt32, drawbuffer : Int32, value : Float32*) : Void
+  fun clear_buffer_fi = glClearBufferfi(buffer : UInt32, drawbuffer : Int32, depth : Float32, stencil : Int32) : Void
+  fun clear_named_framebuffer_iv = glClearNamedFramebufferiv(framebuffer : UInt32, buffer : UInt32, drawbuffer : Int32, value : Int32*) : Void
+  fun clear_named_framebuffer_uiv = glClearNamedFramebufferuiv(framebuffer : UInt32, buffer : UInt32, drawbuffer : Int32, value : UInt32*) : Void
+  fun clear_named_framebuffer_fv = glClearNamedFramebufferfv(framebuffer : UInt32, buffer : UInt32, drawbuffer : Int32, value : Float32*) : Void
+  fun clear_named_framebuffer_fi = glClearNamedFramebufferfi(framebuffer : UInt32, buffer : UInt32, drawbuffer : Int32, depth : Float32, stencil : Int32) : Void
+  fun clear_buffer_data = glClearBufferData(target : UInt32, internalformat : UInt32, format : UInt32, type : UInt32, data : Void*) : Void
+  fun clear_named_buffer_data = glClearNamedBufferData(buffer : UInt32, internalformat : UInt32, format : UInt32, type : UInt32, data : Void*) : Void
+  # fun clear_buffer_sub_data = glClearBufferSubData(target : UInt32, internalformat : UInt32, offset : GLintptr, size : GLsizeiptr, format : UInt32, type : UInt32, data : Void*) : Void
+  # fun clear_named_buffer_sub_data = glClearNamedBufferSubData(buffer : UInt32, internalformat : UInt32, offset : GLintptr, size : GLsizeiptr, format : UInt32, type : UInt32, data : Void*) : Void
+  fun clear_color = glClearColor(red : Float32, green : Float32, blue : Float32, alpha : Float32) : Void
+  fun clear_depth = glClearDepth(depth : Float64) : Void
+  fun clear_depth_f = glClearDepthf(depth : Float32) : Void
+  fun clear_named_buffer_data = glClearNamedBufferData(buffer : UInt32, internalformat : UInt32, format : UInt32, type : UInt32, data : Void*) : Void
+  # fun clear_buffer_sub_data = glClearBufferSubData(target : UInt32, internalformat : UInt32, offset : GLintptr, size : GLsizeiptr, format : UInt32, type : UInt32, data : Void*) : Void
+  # fun clear_named_buffer_sub_data = glClearNamedBufferSubData(buffer : UInt32, internalformat : UInt32, offset : GLintptr, size : GLsizeiptr, format : UInt32, type : GLexnum, data : Void*) : Void
+  fun clear_buffer_iv = glClearBufferiv(buffer : UInt32, drawbuffer : Int32, value : Int32*) : Void
+  fun clear_buffer_uiv = glClearBufferuiv(buffer : UInt32, drawbuffer : Int32, value : UInt32*) : Void
+  fun clear_buffer_fv = glClearBufferfv(buffer : UInt32, drawbuffer : Int32, value : Float32*) : Void
+  fun clear_buffer_fi = glClearBufferfi(buffer : UInt32, drawbuffer : Int32, depth : Float32, stencil : Int32) : Void
+  fun clear_named_framebuffer_iv = glClearNamedFramebufferiv(framebuffer : UInt32, buffer : UInt32, drawbuffer : Int32, value : Int32*) : Void
+  fun clear_named_framebuffer_uiv = glClearNamedFramebufferuiv(framebuffer : UInt32, buffer : UInt32, drawbuffer : Int32, value : UInt32*) : Void
+  fun clear_named_framebuffer_fv = glClearNamedFramebufferfv(framebuffer : UInt32, buffer : UInt32, drawbuffer : Int32, value : Float32*) : Void
+  fun clear_named_framebuffer_fi = glClearNamedFramebufferfi(framebuffer : UInt32, buffer : UInt32, drawbuffer : Int32, depth : Float32, stencil : Int32) : Void
+  fun clear_stencil = glClearStencil(s : Int32) : Void
+  fun clear_tex_image = glClearTexImage(texture : UInt32, level : Int32, format : UInt32, type : UInt32, data : Void*) : Void
+  fun clear_tex_sub_image = glClearTexSubImage(texture : UInt32, level : Int32, xoffset : Int32, yoffset : Int32, zoffset : Int32, width : Int32, height : Int32, depth : Int32, format : UInt32, type : UInt32, data : Void*) : Void
+  # fun client_wait_sync = glClientWaitSync(sync : GLsync, flags : GLbitfield, timeout : UInt64) : UInt32
+  fun clip_control = glClipControl(origin : UInt32, depth : UInt32) : Void
+  fun color_mask = glColorMask(red : Bool, green : Bool, blue : Bool, alpha : Bool) : Void
+  fun color_mask_i = glColorMaski(buf : UInt32, red : Bool, green : Bool, blue : Bool, alpha : Bool) : Void
+  fun compile_shader = glCompileShader(shader : UInt32) : Void
+  fun compressed_tex_image_1d = glCompressedTexImage1D(target : UInt32, level : Int32, internalformat : UInt32, width : Int32, border : Int32, imageSize : Int32, data : Void*) : Void
+  fun compressed_tex_image_2d = glCompressedTexImage2D(target : UInt32, level : Int32, internalformat : UInt32, width : Int32, height : Int32, border : Int32, imageSize : Int32, data : Void*) : Void
+  fun compressed_tex_image_3d = glCompressedTexImage3D(target : UInt32, level : Int32, internalformat : UInt32, width : Int32, height : Int32, depth : Int32, border : Int32, imageSize : Int32, data : Void*) : Void
+  fun compressed_tex_sub_image_1d = glCompressedTexSubImage1D(target : UInt32, level : Int32, xoffset : Int32, width : Int32, format : UInt32, imageSize : Int32, data : Void*) : Void
+  fun compressed_tex_sub_image_2d = glCompressedTexSubImage2D(target : UInt32, level : Int32, xoffset : Int32, yoffset : Int32, width : Int32, height : Int32, format : UInt32, imageSize : Int32, data : Void*) : Void
+  fun compressed_tex_sub_image_3d = glCompressedTexSubImage3D(target : UInt32, level : Int32, xoffset : Int32, yoffset : Int32, zoffset : Int32, width : Int32, height : Int32, depth : Int32, format : UInt32, imageSize : Int32, data : Void*) : Void
+  fun compressed_texture_sub_image_1d = glCompressedTextureSubImage1D(texture : UInt32, level : Int32, xoffset : Int32, width : Int32, format : UInt32, imageSize : Int32, data : Void*) : Void
+  fun compressed_texture_sub_image_2d = glCompressedTextureSubImage2D(texture : UInt32, level : Int32, xoffset : Int32, yoffset : Int32, width : Int32, height : Int32, format : UInt32, imageSize : Int32, data : Void*) : Void
+  fun compressed_texture_sub_image_3d = glCompressedTextureSubImage3D(texture : UInt32, level : Int32, xoffset : Int32, yoffset : Int32, zoffset : Int32, width : Int32, height : Int32, depth : Int32, format : UInt32, imageSize : Int32, data : Void*) : Void
+  # fun copy_buffer_sub_data = glCopyBufferSubData(readTarget : UInt32, writeTarget : UInt32, readOffset : GLintptr, writeOffset : GLintptr, size : GLsizeiptr) : Void
+  # fun copy_named_buffer_sub_data = glCopyNamedBufferSubData(readBuffer : UInt32, writeBuffer : UInt32, readOffset : GLintptr, writeOffset : GLintptr, size : GLsizeiptr) : Void
+  fun copy_image_sub_data = glCopyImageSubData(srcName : UInt32, srcTarget : UInt32, srcLevel : Int32, srcX : Int32, srcY : Int32, srcZ : Int32, dstName : UInt32, dstTarget : UInt32, dstLevel : Int32, dstX : Int32, dstY : Int32, dstZ : Int32, srcWidth : Int32, srcHeight : Int32, srcDepth : Int32) : Void
+  fun copy_tex_image_1d = glCopyTexImage1D(target : UInt32, level : Int32, internalformat : UInt32, x : Int32, y : Int32, width : Int32, border : Int32) : Void
+  fun copy_tex_image_2d = glCopyTexImage2D(target : UInt32, level : Int32, internalformat : UInt32, x : Int32, y : Int32, width : Int32, height : Int32, border : Int32) : Void
+  fun copy_tex_sub_image_1d = glCopyTexSubImage1D(target : UInt32, level : Int32, xoffset : Int32, x : Int32, y : Int32, width : Int32) : Void
+  fun copy_tex_sub_image_2d = glCopyTexSubImage2D(target : UInt32, level : Int32, xoffset : Int32, yoffset : Int32, x : Int32, y : Int32, width : Int32, height : Int32) : Void
+  fun copy_tex_sub_image_3d = glCopyTexSubImage3D(target : UInt32, level : Int32, xoffset : Int32, yoffset : Int32, zoffset : Int32, x : Int32, y : Int32, width : Int32, height : Int32) : Void
+  fun copy_texture_sub_image_1d = glCopyTextureSubImage1D(texture : UInt32, level : Int32, xoffset : Int32, x : Int32, y : Int32, width : Int32) : Void
+  fun copy_texture_sub_image_2d = glCopyTextureSubImage2D(texture : UInt32, level : Int32, xoffset : Int32, yoffset : Int32, x : Int32, y : Int32, width : Int32, height : Int32) : Void
+  fun copy_texture_sub_image_3d = glCopyTextureSubImage3D(texture : UInt32, level : Int32, xoffset : Int32, yoffset : Int32, zoffset : Int32, x : Int32, y : Int32, width : Int32, height : Int32) : Void
+  # fun cos(angle : genType) : genType
+  # fun cosh(x : genType) : genType
+  fun create_buffers = glCreateBuffers(n : Int32, buffers : UInt32*) : Void
+  fun create_framebuffers = glCreateFramebuffers(n : Int32, framebuffers : UInt32*) : Void
+  fun create_program = glCreateProgram : UInt32
+  fun create_program_pipelines = glCreateProgramPipelines(n : Int32, pipelines : UInt32*) : Void
+  fun create_queries = glCreateQueries(target : UInt32, n : Int32, ids : UInt32*) : Void
+  fun create_renderbuffers = glCreateRenderbuffers(n : Int32, renderbuffers : UInt32*) : Void
+  fun create_samplers = glCreateSamplers(n : Int32, samplers : UInt32*) : Void
+  fun create_shader = glCreateShader(shaderType : UInt32) : UInt32
+  fun create_shader_program_v = glCreateShaderProgramv(type : UInt32, count : Int32, strings : UInt8**) : UInt32
+  fun create_textures = glCreateTextures(target : UInt32, n : Int32, textures : UInt32*) : Void
+  fun create_transform_feedbacks = glCreateTransformFeedbacks(n : Int32, ids : UInt32*) : Void
+  fun create_vertex_arrays = glCreateVertexArrays(n : Int32, arrays : UInt32*) : Void
+  # fun cross(x : vec3, y : vec3) : vec3
+  # fun cross(x : dvec3, y : dvec3) : dvec3
+  fun cull_face = glCullFace(mode : UInt32) : Void
+  # fun debug_message_callback = glDebugMessageCallback(DEBUGPROC callback, const void *userParam) : Void
+  fun debug_message_control = glDebugMessageControl(source : UInt32, type : UInt32, severity : UInt32, count : Int32, ids : UInt32*, enabled : Bool) : Void
+  fun debug_message_insert = glDebugMessageInsert(source : UInt32, type : UInt32, id : UInt32, severity : UInt32, length : Int32, message : UInt32*) : Void
+  # fun degrees(radians : genType) : genType
+  fun delete_buffers = glDeleteBuffers(n : Int32, buffers : UInt32*) : Void
+  fun delete_framebuffers = glDeleteFramebuffers(n : Int32, framebuffers : UInt32*) : Void
+  fun delete_program = glDeleteProgram(program : UInt32) : Void
+  fun delete_program_pipelines = glDeleteProgramPipelines(n : Int32, pipelines : UInt32*) : Void
+  fun delete_queries = glDeleteQueries(n : Int32, ids : UInt32*) : Void
+  fun delete_renderbuffers = glDeleteRenderbuffers(n : Int32, renderbuffers : UInt32*) : Void
+  fun delete_samplers = glDeleteSamplers(n : Int32, samplers : UInt32*) : Void
+  fun delete_shader = glDeleteShader(shader : UInt32) : Void
+  # fun delete_sync = glDeleteSync(sync : GLsync) : Void
+  fun delete_textures = glDeleteTextures(n : Int32, textures : UInt32*) : Void
+  fun delete_transform_feedbacks = glDeleteTransformFeedbacks(n : Int32, ids : UInt32*) : Void
+  fun delete_vertex_arrays = glDeleteVertexArrays(n : Int32, arrays : UInt32*) : Void
+  fun depth_func = glDepthFunc(func : UInt32) : Void
+  fun depth_mask = glDepthMask(flag : Bool) : Void
+  fun depth_range = glDepthRange(nearVal : Float64, farVal : Float64) : Void
+  fun depth_range_f = glDepthRangef(nearVal : Float32, farVal : Float32) : Void
+  fun depth_range_array_v = glDepthRangeArrayv(first : UInt32, count : Int32, v : Float64*) : Void
+  fun depth_range_indexed = glDepthRangeIndexed(index : UInt32, nearVal : Float64, farVal : Float64) : Void
+  fun detach_shader = glDetachShader(program : UInt32, shader : UInt32) : Void
+  # fun determinant(mat2 m) : float
+  # fun determinant(mat3 m) : float
+  # fun determinant(mat4 m) : float
+  # fun determinant(dmat2 m) : double
+  # fun determinant(dmat3 m) : double
+  # fun determinant(dmat4 m) : double
+  # fun dFdx(genType p) : genType
+  # fun dFdy(genType p) : genType
+  # fun dFdxCoarse(genType p) : genType
+  # fun dFdyCoarse(genType p) : genType
+  # fun dFdxFine(genType p) : genType
+  # fun dFdyFine(genType p) : genType
+  fun enable = glEnable(cap : UInt32) : Void
+  fun disable = glDisable(cap : UInt32) : Void
+  fun enablei = glEnablei(cap : UInt32, index : UInt32) : Void
+  fun disablei = glDisablei(cap : UInt32, index : UInt32) : Void
+  fun enable_vertex_attrib_array = glEnableVertexAttribArray(index : UInt32) : Void
+  fun disable_vertex_attrib_array = glDisableVertexAttribArray(index : UInt32) : Void
+  fun enable_vertex_array_attrib = glEnableVertexArrayAttrib(vaobj : UInt32, index : UInt32) : Void
+  fun disable_vertex_array_attrib = glDisableVertexArrayAttrib(vaobj : UInt32, index : UInt32) : Void
+  fun dispatch_compute = glDispatchCompute(num_groups_x : UInt32, num_groups_y : UInt32, num_groups_z : UInt32) : Void
+  # fun dispatch_compute_indirect = glDispatchComputeIndirect(indirect : GLintptr) : Void
+  # fun distance(genType p0, genType p1) : Float32
+  # fun distance(genDType p0, genDType p1) : Float64
+  # fun dot(genType x, genType y) : Float32
+  # fun dot(genDType x, genDType y) : Float64
+  fun draw_arrays = glDrawArrays(mode : UInt32, first : Int32, count : Int32) : Void
+  # fun draw_arrays_indirect = glDrawArraysIndirect(mode : UInt32, indirect : const *) : Void
+  fun draw_arrays_instanced = glDrawArraysInstanced(mode : UInt32, first : Int32, count : Int32, instancecount : Int32) : Void
+  fun draw_arrays_instanced_base_instance = glDrawArraysInstancedBaseInstance(mode : UInt32, first : Int32, count : Int32, instancecount : Int32, baseinstance : UInt32) : Void
+  fun draw_buffer = glDrawBuffer(buf : UInt32) : Void
+  fun named_framebuffer_draw_buffer = glNamedFramebufferDrawBuffer(framebuffer : UInt32, buf : UInt32) : Void
+  fun draw_buffers = glDrawBuffers(n : Int32, bufs : UInt32*) : Void
+  fun named_framebuffer_draw_buffers = glNamedFramebufferDrawBuffers(framebuffer : UInt32, n : Int32, bufs : UInt32*) : Void
+  # fun draw_elements = glDrawElements(mode : UInt32, count : Int32, type : UInt32, indices : const * ) : Void
+  # fun draw_elements_base_vertex = glDrawElementsBaseVertex(mode : UInt32, count : Int32, type : UInt32, indices*, basevertex : GLint) : Void
+  # fun draw_elements_indirect = glDrawElementsIndirect(UInt32 mode, UInt32 type, const *indirect) : Void
+  # fun draw_elements_instanced = glDrawElementsInstanced(UInt32 mode, Int32 count, UInt32 type, const * indices, Int32 instancecount) : Void
+  # fun draw_elements_Instanced_base_instance = glDrawElementsInstancedBaseInstance(UInt32 mode, Int32 count, UInt32 type, const * indices, Int32 instancecount, GLuint baseinstance) : Void
+  # fun draw_elements_Instanced_base_vertex = glDrawElementsInstancedBaseVertex(UInt32 mode, Int32 count, UInt32 type, *indices, Int32 instancecount, GLint basevertex) : Void
+  # fun draw_elements_Instanced_base_vertex_base_instance = glDrawElementsInstancedBaseVertexBaseInstance(UInt32 mode, Int32 count, UInt32 type, *indices, Int32 instancecount, GLint basevertex, GLuint baseinstance) : Void
+  # fun draw_range_elements = glDrawRangeElements(UInt32 mode, GLuint start, GLuint end, Int32 count, UInt32 type, const * indices) : Void
+  # fun draw_range_elements_base_vertex = glDrawRangeElementsBaseVertex(UInt32 mode, GLuint start, GLuint end, Int32 count, UInt32 type, *indices, GLint basevertex) : Void
+  fun draw_transform_feedback = glDrawTransformFeedback(mode : UInt32, id : UInt32) : Void
+  fun draw_transform_feedback_instanced = glDrawTransformFeedbackInstanced(mode : UInt32, id : UInt32, instancecount : Int32) : Void
+  fun draw_transform_feedback_stream = glDrawTransformFeedbackStream(mode : UInt32, id : UInt32, stream : UInt32) : Void
+  fun draw_transform_feedback_stream_instanced = glDrawTransformFeedbackStreamInstanced(mode : UInt32, id : UInt32, stream : UInt32, instancecount : Int32) : Void
+  fun emit_stream_vertex = emitStreamVertex(stream : Int32) : Void
+  fun emit_vertex = emitVertex : Void
+  fun enable = glEnable(cap : UInt32) : Void
+  fun disable = glDisable(cap : UInt32) : Void
+  fun enablei = glEnablei(cap : UInt32, index : UInt32) : Void
+  fun disablei = glDisablei(cap : UInt32, index : UInt32) : Void
+  fun enable_vertex_attrib_array = glEnableVertexAttribArray(index : UInt32) : Void
+  fun disable_vertex_attrib_array = glDisableVertexAttribArray(index : UInt32) : Void
+  fun enable_vertex_array_attrib = glEnableVertexArrayAttrib(vaobj : UInt32, index : UInt32) : Void
+  fun disable_vertex_array_attrib = glDisableVertexArrayAttrib(vaobj : UInt32, index : UInt32) : Void
+  fun begin_conditional_render = glBeginConditionalRender(id : UInt32, mode : UInt32) : Void
+  fun end_conditional_render = glEndConditionalRender : Void
+  fun end_primitive = endPrimitive : Void
+  fun begin_query = glBeginQuery(target : UInt32, id : UInt32) : Void
+  fun end_query = glEndQuery(target : UInt32) : Void
+  fun begin_query_indexed = glBeginQueryIndexed(target : UInt32, index : UInt32, id : UInt32) : Void
+  fun end_query_indexed = glEndQueryIndexed(target : UInt32, index : UInt32) : Void
+  fun end_stream_primitive = endStreamPrimitive(stream : Int32) : Void
+  fun begin_transform_feedback = glBeginTransformFeedback(primitiveMode : UInt32) : Void
+  fun end_transform_feedback = glEndTransformFeedback : Void
+  # fun equal(x : vec, y : vec) : bvec
+  # fun equal(x : ivec, y : ivec) : bvec
+  # fun equal(x : uvec, y : uvec) : bvec
+  # fun exp(x : genType) : genType
+  # fun exp2(x : genType) : genType
+  # fun faceforward(genType N, genType I, genType Nref) : genType
+  # fun faceforward(genDType N, genDType I, genDType Nref) : genDType
+  # fun fence_sync = glFenceSync(condition : UInt32, flags : GLbitfield) : GLsync
+  # fun findLSB(value : genIType) : genIType
+  # fun findLSB(value : genUType) : genIType
+  # fun findMSB(value : genIType) : genIType
+  # fun findMSB(value : genUType) : genIType
+  fun finish = glFinish : Void
+  # fun float_bits_to_int = floatBitsToInt(x : genType) : genIType
+  # fun float_Bits_To_uint = floatBitsToUint(x : genType) : genUType
+  # fun floor(x : genType) : genType
+  # fun floor(x : genDType) : genDType
+  fun flush = glFlush : Void
+  # fun flush_mapped_buffer_range = glFlushMappedBufferRange(target : UInt32, offset : GLintptr, length : GLsizeiptr) : Void
+  # fun flush_mapped_named_buffer_range = glFlushMappedNamedBufferRange(buffer : UInt32, offset : GLintptr, length : GLsizeiptr) : Void
+  # fun fma(genType a, genType b, genType c) : genType
+  # fun fma(genDType a, genDType b, genDType c) : genDType
+  # fun fract(genType x) : genType
+  # fun fract(genDType x) : genDType
+  fun framebuffer_parameter_i = glFramebufferParameteri(target : UInt32, pname : UInt32, param : Int32) : Void
+  fun named_framebuffer_parameter_i = glNamedFramebufferParameteri(framebuffer : UInt32, pname : UInt32, param : Int32)
+  fun framebuffer_renderbuffer = glFramebufferRenderbuffer(target : UInt32, attachment : UInt32, renderbuffertarget : UInt32, renderbuffer : UInt32) : Void
+  fun named_framebuffer_renderbuffer = glNamedFramebufferRenderbuffer(framebuffer : UInt32, attachment : UInt32, renderbuffertarget : UInt32, renderbuffer : UInt32) : Void
+  fun framebuffer_texture = glFramebufferTexture(target : UInt32, attachment : UInt32, texture : UInt32, level : Int32) : Void
+  fun framebuffer_texture_1d = glFramebufferTexture1D(target : UInt32, attachment : UInt32, textarget : UInt32, texture : UInt32, level : Int32) : Void
+  fun framebuffer_texture_2d = glFramebufferTexture2D(target : UInt32, attachment : UInt32, textarget : UInt32, texture : UInt32, level : Int32) : Void
+  fun framebuffer_texture_3d = glFramebufferTexture3D(target : UInt32, attachment : UInt32, textarget : UInt32, texture : UInt32, level : Int32, layer : Int32) : Void
+  fun named_framebuffer_texture = glNamedFramebufferTexture(framebuffer : UInt32, attachment : UInt32, texture : UInt32, level : Int32) : Void
+  fun framebuffer_texture_layer = glFramebufferTextureLayer(target : UInt32, attachment : UInt32, texture : UInt32, level : Int32, layer : Int32) : Void
+  fun named_framebuffer_texture_layer = glNamedFramebufferTextureLayer(framebuffer : UInt32, attachment : UInt32, texture : UInt32, level : Int32, layer : Int32) : Void
+  # fun frexp(x : genType, exp : out genIType) : genType
+  # fun frexp(x : genDType, exp : out genIType) : genDType
+  fun front_face = glFrontFace(mode : UInt32) : Void
+  # fun fwidth(p : genType) : genType
+  # fun fwidthCoarse(p : genType) : genType
+  # fun fwidthFine(p : genType) : genType
+  fun gen_Buffers = glGenBuffers(n : Int32, buffers : UInt32*) : Void
+  fun generate_mipmap = glGenerateMipmap(target : UInt32) : Void
+  fun generate_texture_mipmap = glGenerateTextureMipmap(texture : UInt32) : Void
+  fun gen_framebuffers = glGenFramebuffers(n : Int32, ids : UInt32*) : Void
+  fun gen_program_pipelines = glGenProgramPipelines(n : Int32, pipelines : UInt32*) : Void
+  fun gen_queries = glGenQueries(n : Int32, ids : UInt32*) : Void
+  fun gen_renderbuffers = glGenRenderbuffers(n : Int32, renderbuffers : UInt32*) : Void
+  fun gen_samplers = glGenSamplers(n : Int32, samplers : UInt32*) : Void
+  fun gen_textures = glGenTextures(n : Int32, textures : UInt32*) : Void
+  fun gen_transform_feedbacks = glGenTransformFeedbacks(n : Int32, ids : UInt32*) : Void
+  fun gen_vertex_arrays = glGenVertexArrays(n : Int32, arrays : UInt32*) : Void
+  fun get_bool_v = glGetBoolv(pname : UInt32, data : Bool*) : Void
+  fun get_double_v = glGetDoublev(pname : UInt32, data : Float64*) : Void
+  fun get_float_v = glGetFloatv(pname : UInt32, data : Float32*) : Void
+  fun get_integer_v = glGetIntegerv(pname : UInt32, data : Int32*) : Void
+  fun get_integer64_v = glGetInteger64v(pname : UInt32, data : Int64*) : Void
+  fun get_bool_i_v = glGetBooli_v(target : UInt32, index : UInt32, data : Bool*) : Void
+  fun get_integer_i_v = glGetIntegeri_v(target : UInt32, index : UInt32, data : Int32*) : Void
+  fun get_float_i_v = glGetFloati_v(target : UInt32, index : UInt32, data : Float32*) : Void
+  fun get_double_i_v = glGetDoublei_v(target : UInt32, index : UInt32, data : Float64*) : Void
+  fun get_integer64_iv = glGetInteger64i_v(target : UInt32, index : UInt32, data : Int64*) : Void
+  fun get_active_atomic_counter_buffer_iv = glGetActiveAtomicCounterBufferiv(program : UInt32, bufferIndex : UInt32, pname : UInt32, params : Int32*) : Void
+  fun get_active_attrib = glGetActiveAttrib(program : UInt32, index : UInt32, bufSize : Int32, length : Int32*, size : Int32*, type : UInt32*, name : UInt8*) : Void
+  fun get_active_subroutine_name = glGetActiveSubroutineName(program : UInt32, shadertype : UInt32, index : UInt32, bufSize : Int32, length : Int32*, name : UInt8*) : Void
+  fun get_active_subroutine_uniform_iv = glGetActiveSubroutineUniformiv(program : UInt32, shadertype : UInt32, index : UInt32, pname : UInt32, values : Int32*) : Void
+  fun get_active_subroutine_uniform_name = glGetActiveSubroutineUniformName(program : UInt32, shadertype : UInt32, index : UInt32, bufSize : Int32, length : Int32*, name : UInt8*) : Void
+  fun get_active_uniform = glGetActiveUniform(program : UInt32, index : UInt32, bufSize : Int32, length : Int32*, size : Int32*, type : UInt32*, name : UInt8*) : Void
+  fun get_active_uniform_block_iv = glGetActiveUniformBlockiv(program : UInt32, uniformBlockIndex : UInt32, pname : UInt32, params : Int32*) : Void
+  fun get_active_uniform_block_name = glGetActiveUniformBlockName(program : UInt32, uniformBlockIndex : UInt32, bufSize : Int32, length : Int32*, uniformBlockName : UInt8*) : Void
+  fun get_active_uniform_name = glGetActiveUniformName(program : UInt32, uniformIndex : UInt32, bufSize : Int32, length : Int32*, uniformName : UInt8*) : Void
+  fun get_active_uniforms_iv = glGetActiveUniformsiv(program : UInt32, uniformCount : Int32, uniformIndices : UInt32*, pname : UInt32, params : Int32*) : Void
+  fun get_attached_shaders = glGetAttachedShaders(program : UInt32, maxCount : Int32, count : Int32*, shaders : UInt32*) : Void
+  fun get_attrib_location = glGetAttribLocation(program : UInt32, name : UInt8*) : Int32
+  fun get_bool_v = glGetBoolv(pname : UInt32, data : Bool*) : Void
+  fun get_double_v = glGetDoublev(pname : UInt32, data : Float64*) : Void
+  fun get_float_v = glGetFloatv(pname : UInt32, data : Float32*) : Void
+  fun get_integer_v = glGetIntegerv(pname : UInt32, data : Int32*) : Void
+  fun get_integer64_v = glGetInteger64v(pname : UInt32, data : Int64*) : Void
+  fun get_bool_iv = glGetBooli_v(target : UInt32, index : UInt32, data : Bool*) : Void
+  fun get_integer_iv = glGetIntegeri_v(target : UInt32, index : UInt32, data : Int32*) : Void
+  fun get_float_iv = glGetFloati_v(target : UInt32, index : UInt32, data : Float32*) : Void
+  fun get_double_iv = glGetDoublei_v(target : UInt32, index : UInt32, data : Float64*) : Void
+  fun get_integer64_i_v = glGetInteger64i_v(target : UInt32, index : UInt32, data : Int64*) : Void
+  fun get_attrib_location = glGetAttribLocation(program : UInt32, name : UInt8*) : Int32
+  fun get_buffer_parameter_iv = glGetBufferParameteriv(target : UInt32, value : UInt32, data : Int32*) : Void
+  fun get_buffer_parameter_i64v = glGetBufferParameteri64v(target : UInt32, value : UInt32, data : Int64*) : Void
+  fun get_named_buffer_parameter_iv = glGetNamedBufferParameteriv(buffer : UInt32, pname : UInt32, params : Int32*) : Void
+  fun get_named_buffer_parameter_i64v = glGetNamedBufferParameteri64v(buffer : UInt32, pname : UInt32, params : Int64*) : Void
+  fun get_buffer_pointer_v = glGetBufferPointerv(target : UInt32, pname : UInt32, params : Void**) : Void
+  fun get_named_buffer_pointer_v = glGetNamedBufferPointerv(buffer : UInt32, pname : UInt32, params : Void**) : Void
+  # fun get_buffer_sub_data = glGetBufferSubData(target : UInt32, offset : GLintptr, size : GLsizeiptr, data : Void*) : Void
+  # fun get_named_buffer_sub_data = glGetNamedBufferSubData(buffer : UInt32, offset : GLintptr, size : GLsizeiptr, data : Void*) : Void
+  fun get_framebuffer_attachment_parameter_iv = glGetFramebufferAttachmentParameteriv(target : UInt32, attachment : UInt32, pname : UInt32, params : Int32*) : Void
+  fun get_named_framebuffer_attachment_parameter_iv = glGetNamedFramebufferAttachmentParameteriv(framebuffer : UInt32, attachment : UInt32, pname : UInt32, params : Int32*) : Void
+  fun get_renderbuffer_parameter_iv = glGetRenderbufferParameteriv(target : UInt32, pname : UInt32, params : Int32*) : Void
+  fun get_named_renderbuffer_parameter_iv = glGetNamedRenderbufferParameteriv(renderbuffer : UInt32, pname : UInt32, params : Int32*) : Void
+  fun get_compressed_tex_image = glGetCompressedTexImage(target : UInt32, level : Int32, pixels : Void*) : Void
+  fun get_n_compressed_tex_image = glGetnCompressedTexImage(target : UInt32, level : Int32, bufSize : Int32, pixels : Void*) : Void
+  fun get_compressed_texture_image = glGetCompressedTextureImage(texture : UInt32, level : Int32, bufSize :  Int32, pixels : Void*) : Void
+  fun get_tex_image = glGetTexImage(target : UInt32, level : Int32, format : UInt32, type : UInt32, pixels : Void*) : Void
+  fun get_n_tex_image = glGetnTexImage(target : UInt32, level : Int32, format : UInt32, type : UInt32, bufSize : Int32, pixels : Void*) : Void
+  fun get_texture_image = glGetTextureImage(texture : UInt32, level : Int32, format : UInt32, type : UInt32, bufSize : Int32, pixels : Void*) : Void
+  fun get_tex_level_parameter_fv = glGetTexLevelParameterfv(target : UInt32, level : Int32, pname : UInt32, params : Float32*) : Void
+  fun get_tex_level_parameter_iv = glGetTexLevelParameteriv(target : UInt32, level : Int32, pname : UInt32, params : Int32*) : Void
+  fun get_texture_level_parameter_fv = glGetTextureLevelParameterfv(texture : UInt32, level : Int32, pname : UInt32, params : Float32*) : Void
+  fun get_texture_level_parameter_iv = glGetTextureLevelParameteriv(texture : UInt32, level : Int32, pname : UInt32, params : Int32*) : Void
+  fun get_tex_parameter_fv = glGetTexParameterfv(target : UInt32, pname : UInt32, params : Float32*) : Void
+  fun get_tex_parameter_iv = glGetTexParameteriv(target : UInt32, pname : UInt32, params : Int32*) : Void
+  fun get_tex_parameter_i_iv = glGetTexParameterIiv(target : UInt32, pname : UInt32, params : Int32*) : Void
+  fun get_tex_parameter_i_uiv = glGetTexParameterIuiv(target : UInt32, pname : UInt32, params : UInt32*) : Void
+  fun get_texture_parameter_fv = glGetTextureParameterfv(texture : UInt32, pname : UInt32, params : Float32*) : Void
+  fun get_texture_parameter_iv = glGetTextureParameteriv(texture : UInt32, pname : UInt32, params : Int32*) : Void
+  fun get_texture_parameter_i_iv = glGetTextureParameterIiv(texture : UInt32, pname : UInt32, params : Int32*) : Void
+  fun get_texture_parameter_i_uiv = glGetTextureParameterIuiv(texture : UInt32, pname : UInt32, params : UInt32*) : Void
+  fun get_tex_image = glGetTexImage(target : UInt32, level : Int32, format : UInt32, type : UInt32, pixels : Void*) : Void
+  fun get_n_tex_image = glGetnTexImage(target : UInt32, level : Int32, format : UInt32, type : UInt32, bufSize : Int32, pixels : Void*) : Void
+  fun get_texture_image = glGetTextureImage(texture : UInt32, level : Int32, format : UInt32, type : UInt32, bufSize : Int32, pixels : Void*) : Void
+  fun get_tex_level_parameter_fv = glGetTexLevelParameterfv(target : UInt32, level : Int32, pname : UInt32, params : Float32*) : Void
+  fun get_tex_level_parameter_iv = glGetTexLevelParameteriv(target : UInt32, level : Int32, pname : UInt32, params : Int32*) : Void
+  fun get_texture_level_parameter_fv = glGetTextureLevelParameterfv(texture : UInt32, level : Int32, pname : UInt32, params : Float32*) : Void
+  fun get_texture_level_parameter_iv = glGetTextureLevelParameteriv(texture : UInt32, level : Int32, pname : UInt32, params : Int32*) : Void
 end
-
-https://www.khronos.org/registry/OpenGL-Refpages/gl4/
