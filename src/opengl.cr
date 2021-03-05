@@ -1,9 +1,13 @@
 ################################################################################
 # OpenGL 4.5
 ################################################################################
+# https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/index.php
+# https://www.khronos.org/opengl/wiki/OpenGL_Type
 
 lib LibGL
   alias Enum = UInt32
+  alias IntPtr = UInt64 # Depend of the system
+  alias SizeIntPtr = UInt64 # Depend of the system
   ##############################################################################
   # API Entry Points
   ##############################################################################
@@ -19,14 +23,14 @@ lib LibGL
   fun bind_attrib_location = glBindAttribLocation(program : UInt32, index : UInt32, name : UInt8*) : Void
   fun bind_buffer = glBindBuffer(target : Enum, buffer : UInt32) : Void
   fun bind_buffer_base = glBindBufferBase(target : Enum, index : UInt32, buffer : UInt32) : Void
-  fun bind_buffer_range = glBindBufferRange(target : Enum, index : UInt32, buffer : UInt32, offset : GLintptr, size : GLsizeiptr) : Void
-  fun bind_buffers_base = glBindBuffersBase(target : Enum, first : UInt32, count : GLsizei, buffers : UInt32*) : Void
-
-
-
-  fun bind_buffers_range = glBindBuffersRange(target : UInt32, first : UInt32, count : Int32, buffers : UInt32*, offsets : GLintptr*, sizes : GLintptr*) : Void
+  fun bind_buffer_range = glBindBufferRange(target : Enum, index : UInt32, buffer : UInt32, offset : IntPtr, size : SizeIntPtr) : Void
+  fun bind_buffers_base = glBindBuffersBase(target : Enum, first : UInt32, count : UInt32, buffers : UInt32*) : Void
+  fun bind_buffers_range = glBindBuffersRange(target : Enum, first : UInt32, count : UInt32, buffers : UInt32*, offsets : IntPtr*, sizes : IntPtr*) : Void 
   fun bind_frag_data_location = glBindFragDataLocation(program : UInt32, colorNumber : UInt32, name : UInt8*) : Void
   fun bind_frag_data_location_indexed = glBindFragDataLocationIndexed(program : UInt32, colorNumber : UInt32, index : UInt32, name : UInt8*) : Void
+
+
+
   fun bind_framebuffer = glBindFramebuffer(target : UInt32, framebuffer : UInt32) : Void
   fun bind_image_texture = glBindImageTexture(unit : UInt32, texture : UInt32, level : Int32, layered : Bool, layer : Int32, access : UInt32, format : UInt32) : Void
   fun bind_image_textures = glBindImageTextures(first : UInt32, count : Int32, textures : UInt32*) : Void
@@ -445,417 +449,195 @@ lib LibGL
   fun sampler_parameter_i_uiv = glSamplerParameterIuiv(sampler : UInt32, pname : Enum, params : UInt32*) : Void
   fun sampler_parameter_iv = glSamplerParameteriv(sampler : UInt32, pname : Enum, params : Int32*) : Void
   fun scissor = glScissor(x : Int32 , y : Int32, width : GLsizei, height : GLsizei) : Void
-
-  fun glScissorArray
-  fun glScissorArrayv
-  fun glScissorIndexed
-  fun glScissorIndexedv
-  fun glShaderBinary
-  fun glShaderSource
-  fun glShaderStorageBlockBinding
-  fun glStencilFunc
-  fun glStencilFuncSeparate
-  fun glStencilMask
-  fun glStencilMaskSeparate
-  fun glStencilOp
-  fun glStencilOpSeparate
+  fun scissor_array_v = glScissorArrayv(first : UInt32, count : GLsizei, v : Int32*) : Void
+  fun scissor_indexed = glScissorIndexed(index : UInt32, left : Int32, bottom : Int32, width : GLsizei, height : GLsizei) : Void
+  fun scissor_indexed_v = glScissorIndexedv(index : UInt32, v : Int32*) : Void
+  fun shader_binary = glShaderBinary(count : GLsizei, shaders : UInt32*, binaryFormat : Enum, binary : Void*, length : GLsizei) : Void
+  fun shader_source = glShaderSource(shader : UInt32, count : GLsizei, string : UInt8**, length : Int32*) : Void
+  fun shader_storage_block_binding = glShaderStorageBlockBinding(program : UInt32, storageBlockIndex : UInt32, storageBlockBinding : UInt32) : Void
+  fun stencil_func = glStencilFunc(func : Enum, ref : Int32, mask : UInt32) : Void
+  fun stencil_func_separate = glStencilFuncSeparate(face : Enum, func : Enum, ref : Int32, mask : UInt32) : Void
+  fun stencil_mask = glStencilMask(mask : UInt32) : Void
+  fun stencil_mask_separate = glStencilMaskSeparate(face : Enum, mask : UInt32) : Void
+  fun stencil_op = glStencilOp(sfail : Enum, dpfail : Enum, dppass : Enum) : Void
+  fun stencil_op_separate = glStencilOpSeparate(face : Enum, sfail : Enum , dpfail : Enum, dppass : Enum) : Void
   # -> T
-  fun glTexBuffer
-  fun glTexBufferRange
-  fun glTexImage1D
-  fun glTexImage2D
-  fun glTexImage2DMultisample
-  fun glTexImage3D
-  fun glTexImage3DMultisample
-  fun glTexParameter
-  fun glTexParameterf
-  fun glTexParameterfv
-  fun glTexParameteri
-  fun glTexParameterIiv
-  fun glTexParameterIuiv
-  fun glTexParameteriv
-  fun glTexStorage1D
-  fun glTexStorage2D
-  fun glTexStorage2DMultisample
-  fun glTexStorage3D
-  fun glTexStorage3DMultisample
-  fun glTexSubImage1D
-  fun glTexSubImage2D
-  fun glTexSubImage3D
-  fun glTextureBarrier
-  fun glTextureBuffer
-  fun glTextureBufferRange
-  fun glTextureParameterf
-  fun glTextureParameterfv
-  fun glTextureParameteri
-  fun glTextureParameterIiv
-  fun glTextureParameterIuiv
-  fun glTextureParameteriv
-  fun glTextureStorage1D
-  fun glTextureStorage2D
-  fun glTextureStorage2DMultisample
-  fun glTextureStorage3D
-  fun glTextureStorage3DMultisample
-  fun glTextureSubImage1D
-  fun glTextureSubImage2D
-  fun glTextureSubImage3D
-  fun glTextureView
-  fun glTransformFeedbackBufferBase
-  fun glTransformFeedbackBufferRange
-  fun glTransformFeedbackVaryings
+  fun tex_buffer = glTexBuffer(target : Enum, internalformat : Enum, buffer : UInt32) : Void
+  fun tex_buffer_range = glTexBufferRange(target : Enum, internalformat : Enum, buffer : UInt32, offset : GLintptr, size : GLsizeiptr) : Void
+  fun tex_image_1d = glTexImage1D(target : Enum, level : Int32, internalformat : Int32, width : GLsizei, border : Int32, format : Enum, type : Enum, data : Void*) : Void
+  fun tex_image_2d = glTexImage2D(target : Enum, level : Int32, internalformat : Int32, width : GLsizei, height : GLsizei, border : Int32, format : Enum, type : Enum, data : Void*) : Void
+  fun tex_image_2d_multisample = glTexImage2DMultisample(target : Enum, samples : GLsizei, internalformat : Enum, width : GLsizei, height : GLsizei, fixedsamplelocations : Bool) : Void
+  fun tex_image_3d = glTexImage3D(target : Enum, level : Int32, internalformat : Int32, width : GLsizei, height : GLsizei, depth : GLsizei, border : Int32, format : Enum, type : Enum, data : Void*) : Void
+  fun tex_image_3d_multisample = glTexImage3DMultisample(target : Enum, samples : GLsizei, internalformat : Enum, width : GLsizei, height : GLsizei, depth : GLsizei, fixedsamplelocations : Bool) : Void
+  fun tex_parameter_f = glTexParameterf(target : Enum, pname : Enum, param : Float32) : Void
+  fun tex_parameter_fv = glTexParameterfv(target : Enum, pname : Enum, params : Float32*) : Void
+  fun tex_parameter_i = glTexParameteri(target : Enum, pname : Enum, param : Int32) : Void
+  fun tex_parameter_i_iv = glTexParameterIiv(target : Enum, pname : Enum, params : Int32*) : Void
+  fun tex_parameter_i_uiv = glTexParameterIuiv(target : Enum, pname : Enum, params : UInt32*) : Void
+  fun tex_parameter_iv = glTexParameteriv(target : Enum, pname : Enum, params : Int32*) : Void
+  fun tex_storage_1d = glTexStorage1D(target : Enum, levels : GLsizei, internalformat : Enum, width : GLsizei) : Void
+  fun tex_storage_2d = glTexStorage2D(target : Enum, levels : GLsizei, internalformat : Enum, width : GLsizei, height : GLsizei) : Void
+  fun tex_storage_2d_multisample = glTexStorage2DMultisample(target : Enum , samples : GLsizei, internalformat : Enum, width : GLsizei, height : GLsizei, fixedsamplelocations : Bool) : Void
+  fun tex_storage_3d = glTexStorage3D(target : Enum, levels : GLsizei, internalformat : Enum, width : GLsizei, height : GLsizei, depth : GLsizei) : Void
+  fun tex_storage_3d_multisample = glTexStorage3DMultisample(target : Enum, samples : GLsizei, internalformat : Enum, width : GLsizei, height : GLsizei, depth : GLsizei, fixedsamplelocations : Bool) : Void
+  fun tex_sub_image_1d = glTexSubImage1D(target : Enum, level : Int32, xoffset : Int32, width : GLsizei, format : Enum, type : Enum, pixels : Void*) : Void
+  fun tex_sub_image_2d = glTexSubImage2D(target : Enum, level : Int32, xoffset : Int32, yoffset : Int32, width : GLsizei, height : GLsizei, format : Enum, type : Enum, pixels : Void*) : Void
+  fun tex_sub_image_3d = glTexSubImage3D(target : Enum, level : Int32, xoffset : Int32, yoffset : Int32, zoffset : Int32, width : GLsizei, height : GLsizei, depth : GLsizei, format : Enum, type : Enum, pixels : Void*) : Void
+  fun texture_barrier = glTextureBarrier : Void
+  fun texture_buffer = glTextureBuffer(texture : UInt32, internalformat : Enum, buffer : UInt32) : Void
+  fun texture_buffer_Range = glTextureBufferRange(texture : UInt32, internalformat : Enum, buffer : UInt32, offset : GLintptr, size : GLsizei) : Void
+  fun texture_parameter_f = glTextureParameterf(texture : UInt32, pname : Enum, param : Float32) : Void
+  fun texture_parameter_fv = glTextureParameterfv(texture : UInt32, pname : Enum, params : Float32*) : Void
+  fun texture_parameter_i = glTextureParameteri(texture : UInt32, pname : Enum, param : Int32) : Void
+  fun texture_parameter_i_iv = glTextureParameterIiv(texture : UInt32, pname : Enum, params : Int32*) : Void
+  fun texture_parameter_i_uiv = glTextureParameterIuiv(texture : UInt32, pname : Enum, params : UInt32*) : Void
+  fun texture_parameter_iv = glTextureParameteriv(texture : UInt32, pname : Enum, params : Int32*) : Void
+  fun texture_storage_1d = glTextureStorage1D(texture : UInt32, levels : GLsizei, internalformat : Enum, width : GLsizei) : Void
+  fun texture_storage_2d = glTextureStorage2D(texture : UInt32, levels : GLsizei, internalformat : Enum, width : GLsizei, height : GLsizei) : Void
+  fun texture_storage_2d_multisample = glTextureStorage2DMultisample(texture : UInt32, samples : GLsizei, internalformat : Enum, width : GLsizei, height : GLsizei, fixedsamplelocations : Bool) : Void
+  fun texture_storage_3d = glTextureStorage3D(texture : UInt32, levels : GLsizei, internalformat : Enum, width : GLsizei, height : GLsizei, depth : GLsizei) : Void
+  fun texture_storage_3d_multisample = glTextureStorage3DMultisample(texture : UInt32, samples : GLsizei, internalformat : Enum, width : GLsizei, height : GLsizei, depth : GLsizei, fixedsamplelocations : Bool) : Void
+  fun texture_sub_image_1d = glTextureSubImage1D(texture : UInt32, level : Int32, xoffset : Int32, width : GLsizei, format : Enum, type : Enum, pixels : Void*) : Void
+  fun texture_sub_image_2d = glTextureSubImage2D(texture : UInt32, level : Int32, xoffset : Int32, yoffset : Int32, width : GLsizei, height : GLsizei, format : Enum, type : Enum, pixels : Void*) : Void
+  fun texture_sub_image_3d = glTextureSubImage3D(texture : UInt32, level : Int32, xoffset : Int32, yoffset : Int32, zoffset : Int32, width : GLsizei, height : GLsizei, depth : GLsizei, format : Enum, type : Enum, pixels : Void*) : Void
+  fun texture_view = glTextureView(texture : UInt32, target : Enum, origtexture : UInt32, internalformat : Enum, minlevel : UInt32, numlevels : UInt32, minlayer : UInt32, numlayers : UInt32) : Void
+  fun transform_feedback_buffer_base = glTransformFeedbackBufferBase(xfb : UInt32, index : UInt32, buffer : UInt32) : Void
+  fun transform_feedback_buffer_range = glTransformFeedbackBufferRange(xfb : UInt32, index : UInt32, buffer : UInt32, offset : GLintptr, size : GLsizei) : Void
+  fun transform_feedback_varyings = glTransformFeedbackVaryings(program : UInt32, count : GLsizei, varyings : UInt8**, bufferMode : Enum) : Void
   # -> U
-  fun glUniform
-  fun glUniform1f
-  fun glUniform1fv
-  fun glUniform1i
-  fun glUniform1iv
-  fun glUniform1ui
-  fun glUniform1uiv
-  fun glUniform2f
-  fun glUniform2fv
-  fun glUniform2i
-  fun glUniform2iv
-  fun glUniform2ui
-  fun glUniform2uiv
-  fun glUniform3f
-  fun glUniform3fv
-  fun glUniform3i
-  fun glUniform3iv
-  fun glUniform3ui
-  fun glUniform3uiv
-  fun glUniform4f
-  fun glUniform4fv
-  fun glUniform4i
-  fun glUniform4iv
-  fun glUniform4ui
-  fun glUniform4uiv
-  fun glUniformBlockBinding
-  fun glUniformMatrix2fv
-  fun glUniformMatrix2x3fv
-  fun glUniformMatrix2x4fv
-  fun glUniformMatrix3fv
-  fun glUniformMatrix3x2fv
-  fun glUniformMatrix3x4fv
-  fun glUniformMatrix4fv
-  fun glUniformMatrix4x2fv
-  fun glUniformMatrix4x3fv
-  fun glUniformSubroutines
-  fun glUniformSubroutinesuiv
-  fun glUnmapBuffer
-  fun glUnmapNamedBuffer
-  fun glUseProgram
-  fun glUseProgramStages
+  fun uniform_1f = glUniform1f(location : Int32, v0 : Float32) : Void
+  fun uniform_1fv = glUniform1fv(location : Int32, count : GLsizei, value : Float32*) : Void
+  fun uniform_1i = glUniform1i(location : Int32, v0 : Int32) : Void
+  fun uniform_1iv = glUniform1iv(location : Int32, count : GLsizei, value : Int32*) : Void
+  fun uniform_1ui = glUniform1ui(location : Int32, v0 : UInt32) : Void
+  fun uniform_1uiv = glUniform1uiv(location : Int32, count : GLsizei, value : UInt32*) : Void
+  fun uniform_2f = glUniform2f(location : Int32, v0 : Float32, v1 : Float32) : Void
+  fun uniform_2fv = glUniform2fv(location : Int32, count : GLsizei, value : Float32*) : Void
+  fun uniform_2i = glUniform2i(location : Int32, v0 : Int32, v1 : Int32) : Void
+  fun uniform_2iv = glUniform2iv(location : Int32, count : GLsizei, value : Int32*) : Void
+  fun uniform_2ui = glUniform2ui(location : Int32, v0 : UInt32, v1 : UInt32) : Void
+  fun uniform_2uiv = glUniform2uiv(location : Int32, count : GLsizei, value : UInt32*) : Void
+  fun uniform_3f = glUniform3f(location : Int32, v0 : Float32, v1 : Float32, v2 : Float32) : Void
+  fun uniform_3fv = glUniform3fv(location : Int32, count : GLsizei, value : Float32*) : Void
+  fun uniform_3i = glUniform3i(location : Int32, v0 : Int32, v1 : Int32, v2 : Int32) : Void
+  fun uniform_3iv = glUniform3iv(location : Int32, count : GLsizei, value : Int32*) : Void
+  fun uniform_3ui = glUniform3ui(location : Int32, v0 : UInt32, v1 : UInt32, v2 : UInt32) : Void
+  fun uniform_3uiv = glUniform3uiv(location : Int32, count : GLsizei, value : UInt32*) : Void
+  fun uniform_4f = glUniform4f(location : Int32, v0 : Float32, v1 : Float32, v2 : Float32, v3 : Float32) : Void
+  fun uniform_4fv = glUniform4fv(location : Int32, count : GLsizei, value : Float32*) : Void
+  fun uniform_4i = glUniform4i(location : Int32, v0 : Int32, v1 : Int32, v2 : Int32, v3 : Int32) : Void
+  fun uniform_4iv = glUniform4iv(location : Int32, count : GLsizei, value : Int32*) : Void
+  fun uniform_4ui = glUniform4ui(location : Int32, v0 : UInt32, v1 : UInt32, v2 : UInt32, v3 : UInt32) : Void
+  fun uniform_4uiv = glUniform4uiv(location : Int32, count : GLsizei, value : UInt32*) : Void
+  fun uniform_block_binding = glUniformBlockBinding(program : UInt32, uniformBlockIndex : UInt32, uniformBlockBinding : UInt32) : Void
+  fun uniform_matrix_2fv = glUniformMatrix2fv(location : Int32, count : GLsizei, transpose : Bool, value : Float32*) : Void
+  fun uniform_matrix_2x3fv = glUniformMatrix2x3fv(location : Int32, count : GLsizei, transpose : Bool, value : Float32*) : Void
+  fun uniform_matrix_2x4fv = glUniformMatrix2x4fv(location : Int32, count : GLsizei, transpose : Bool, value : Float32*) : Void
+  fun uniform_matrix_3fv = glUniformMatrix3fv(location : Int32, count : GLsizei, transpose : Bool, value : Float32*) : Void
+  fun uniform_matrix_3x2fv = glUniformMatrix3x2fv(location : Int32, count : GLsizei, transpose : Bool, value : Float32*) : Void
+  fun uniform_matrix_3x4fv = glUniformMatrix3x4fv(location : Int32, count : GLsizei, transpose : Bool, value : Float32*) : Void
+  fun uniform_matrix_4fv = glUniformMatrix4fv(location : Int32, count : GLsizei, transpose : Bool, value : Float32*) : Void
+  fun uniform_matrix_4x2fv = glUniformMatrix4x2fv(location : Int32, count : GLsizei, transpose : Bool, value : Float32*) : Void
+  fun uniform_matrix_4x3fv = glUniformMatrix4x3fv(location : Int32, count : GLsizei, transpose : Bool, value : Float32*) : Void
+  fun uniform_subroutines_uiv = glUniformSubroutinesuiv(shadertype : Enum, count : GLsizei, indices : UInt32*) : Void
+  fun unmap_buffer = glUnmapBuffer(target : Enum) : Bool
+  fun unmap_named_buffer = glUnmapNamedBuffer(buffer : UInt32) : Bool
+  fun use_program = glUseProgram(program : UInt32) : Void
+  fun use_program_Stages = glUseProgramStages(pipeline : UInt32, stages : GLbitfield, program : UInt32) : Void
   # -> V
-  fun glValidateProgram
-  fun glValidateProgramPipeline
-  fun glVertexArrayAttribBinding
-  fun glVertexArrayAttribFormat
-  fun glVertexArrayAttribIFormat
-  fun glVertexArrayAttribLFormat
-  fun glVertexArrayBindingDivisor
-  fun glVertexArrayElementBuffer
-  fun glVertexArrayVertexBuffer
-  fun glVertexArrayVertexBuffers
-  fun glVertexAttrib
-  fun glVertexAttrib1d
-  fun glVertexAttrib1dv
-  fun glVertexAttrib1f
-  fun glVertexAttrib1fv
-  fun glVertexAttrib1s
-  fun glVertexAttrib1sv
-  fun glVertexAttrib2d
-  fun glVertexAttrib2dv
-  fun glVertexAttrib2f
-  fun glVertexAttrib2fv
-  fun glVertexAttrib2s
-  fun glVertexAttrib2sv
-  fun glVertexAttrib3d
-  fun glVertexAttrib3dv
-  fun glVertexAttrib3f
-  fun glVertexAttrib3fv
-  fun glVertexAttrib3s
-  fun glVertexAttrib3sv
-  fun glVertexAttrib4bv
-  fun glVertexAttrib4d
-  fun glVertexAttrib4dv
-  fun glVertexAttrib4f
-  fun glVertexAttrib4fv
-  fun glVertexAttrib4iv
-  fun glVertexAttrib4Nbv
-  fun glVertexAttrib4Niv
-  fun glVertexAttrib4Nsv
-  fun glVertexAttrib4Nub
-  fun glVertexAttrib4Nubv
-  fun glVertexAttrib4Nuiv
-  fun glVertexAttrib4Nusv
-  fun glVertexAttrib4s
-  fun glVertexAttrib4sv
-  fun glVertexAttrib4ubv
-  fun glVertexAttrib4uiv
-  fun glVertexAttrib4usv
-  fun glVertexAttribBinding
-  fun glVertexAttribDivisor
-  fun glVertexAttribFormat
-  fun glVertexAttribI1i
-  fun glVertexAttribI1iv
-  fun glVertexAttribI1ui
-  fun glVertexAttribI1uiv
-  fun glVertexAttribI2i
-  fun glVertexAttribI2iv
-  fun glVertexAttribI2ui
-  fun glVertexAttribI2uiv
-  fun glVertexAttribI3i
-  fun glVertexAttribI3iv
-  fun glVertexAttribI3ui
-  fun glVertexAttribI3uiv
-  fun glVertexAttribI4bv
-  fun glVertexAttribI4i
-  fun glVertexAttribI4iv
-  fun glVertexAttribI4sv
-  fun glVertexAttribI4ubv
-  fun glVertexAttribI4ui
-  fun glVertexAttribI4uiv
-  fun glVertexAttribI4usv
-  fun glVertexAttribIFormat
-  fun glVertexAttribIPointer
-  fun glVertexAttribL1d
-  fun glVertexAttribL1dv
-  fun glVertexAttribL2d
-  fun glVertexAttribL2dv
-  fun glVertexAttribL3d
-  fun glVertexAttribL3dv
-  fun glVertexAttribL4d
-  fun glVertexAttribL4dv
-  fun glVertexAttribLFormat
-  fun glVertexAttribLPointer
-  fun glVertexAttribP1ui
-  fun glVertexAttribP2ui
-  fun glVertexAttribP3ui
-  fun glVertexAttribP4ui
-  fun glVertexAttribPointer
-  fun glVertexBindingDivisor
-  fun glViewport
-  fun glViewportArray
-  fun glViewportArrayv
-  fun glViewportIndexed
-  fun glViewportIndexedf
-  fun glViewportIndexedfv
+  fun validate_program = glValidateProgram(program : UInt32) : Void
+  fun validate_program_pipeline = glValidateProgramPipeline(pipeline : UInt32) : Void
+  fun vertex_array_attrib_binding = glVertexArrayAttribBinding(vaobj : UInt32, attribindex : UInt32, bindingindex : UInt32) : Void
+  fun vertex_array_attrib_format = glVertexArrayAttribFormat(vaobj : UInt32, attribindex : UInt32, size : Int32, type : Enum, normalized : Bool, relativeoffset : UInt32) : Void
+  fun vertex_array_attrib_i_format = glVertexArrayAttribIFormat(vaobj : UInt32, attribindex : UInt32, size : Int32, type : Enum, relativeoffset : UInt32) : Void
+  fun vertex_array_attrib_l_format = glVertexArrayAttribLFormat(vaobj : UInt32, attribindex : UInt32, size : Int32, type : Enum, relativeoffset : UInt32) : Void
+  fun vertex_array_binding_divisor = glVertexArrayBindingDivisor(vaobj : UInt32, bindingindex : UInt32, divisor : UInt32) : Void
+  fun vertex_array_element_buffer = glVertexArrayElementBuffer(vaobj : UInt32, buffer : UInt32) : Void
+  fun vertex_array_vertex_buffer = glVertexArrayVertexBuffer(vaobj : UInt32, bindingindex : UInt32, buffer : UInt32, offset : GLintptr, stride : GLsizei) : Void
+  fun vertex_array_vertex_buffers = glVertexArrayVertexBuffers(vaobj : UInt32, first : UInt32, count : GLsizei, buffers : UInt32*, offsets : GLintptr*, strides : GLsizei*) : Void
+  fun vertex_attrib_1d = glVertexAttrib1d(index : UInt32, v0 : Float64) : Void
+  fun vertex_attrib_1dv = glVertexAttrib1dv(index : UInt32, v : Float64*) : Void
+  fun vertex_attrib_1f = glVertexAttrib1f(index : UInt32, v0 : Float32) : Void
+  fun vertex_attrib_1fv = glVertexAttrib1fv(index : UInt32, v : Float32*) : Void
+  fun vertex_attrib_1s = glVertexAttrib1s(index : UInt32, v0 : Int16) : Void
+  fun vertex_attrib_1sv = glVertexAttrib1sv(index : UInt32, v : Int16*) : Void
+  fun vertex_attrib_2d = glVertexAttrib2d(index : UInt32, v0 : Float64, v1 : Float64) : Void
+  fun vertex_attrib_2dv = glVertexAttrib2dv(index : UInt32, v : Float64*) : Void
+  fun vertex_attrib_2f = glVertexAttrib2f(index : UInt32, v0 : Float32, v1 : Float32) : Void
+  fun vertex_attrib_2fv = glVertexAttrib2fv(index : UInt32, v : Float32*) : Void
+  fun vertex_attrib_2s = glVertexAttrib2s(index : UInt32, v0 : Int16, v1 : Int16) : Void
+  fun vertex_attrib_2sv = glVertexAttrib2sv(index : UInt32, v : Int16*) : Void
+  fun vertex_attrib_3d = glVertexAttrib3d(index : UInt32, v0 : Float64, v1 : Float64, v2 : Float64) : Void
+  fun vertex_attrib_3dv = glVertexAttrib3dv(index : UInt32, v : Float64*) : Void
+  fun vertex_attrib_3f = glVertexAttrib3f(index : UInt32, v0 : Float32, v1 : Float32, v2 : Float32) : Void
+  fun vertex_attrib_3fv = glVertexAttrib3fv(index : UInt32, v : Float32*) : Void
+  fun vertex_attrib_3s = glVertexAttrib3s(index : UInt32, v0 : Int8, v1 : Int8, v2 : Int8) : Void
+  fun vertex_attrib_3sv = glVertexAttrib3sv(index : UInt32, v : Int8*) : Void
+  fun vertex_attrib_4bv = glVertexAttrib4bv(index : UInt32, v : GLbyte*) : Void
+  fun vertex_attrib_4d = glVertexAttrib4d(index : UInt32, v0 : Float64, v1 : Float64, v2 : Float64, v3 : Float64) : Void
+  fun vertex_attrib_4dv = glVertexAttrib4dv(index : UInt32, v : Float64*) : Void
+  fun vertex_attrib_4f = glVertexAttrib4f(index : UInt32, v0 : Float32, v1 : Float32, v2 : Float32, v3 : Float32) : Void
+  fun vertex_attrib_4fv = glVertexAttrib4fv(index : UInt32, v : Float32*) : Void
+  fun vertex_attrib_4iv = glVertexAttrib4iv(index : UInt32, v : Int32*) : Void
+  fun vertex_attrib_4n_bv = glVertexAttrib4Nbv(index : UInt32, v : Int8*) : Void
+  fun vertex_attrib_4n_iv = glVertexAttrib4Niv(index : UInt32, v : Int32*) : Void
+  fun vertex_attrib_4n_sv = glVertexAttrib4Nsv(index : UInt32, v : Int16*) : Void
+  fun vertex_attrib_4n_ub = glVertexAttrib4Nub(index : UInt32, v0 : UInt8, v1 : UInt8, v2 : UInt8, v3 : UInt8) : Void
+  fun vertex_attrib_4n_ubv = glVertexAttrib4Nubv(index : UInt32, v : UInt8*) : Void
+  fun vertex_attrib_4n_uiv = glVertexAttrib4Nuiv(index : UInt32, v : UInt32*) : Void
+  fun vertex_attrib_4n_usv = glVertexAttrib4Nusv(index : UInt32, v : UInt16*) : Void
+  fun vertex_attrib_4s = glVertexAttrib4s(index : UInt32, v0 : Int16, v1 : Int16, v2 : Int16, v3 : Int16) : Void
+  fun vertex_attrib_4sv = glVertexAttrib4sv(index : UInt32, v : Int16*) : Void
+  fun vertex_attrib_4ubv = glVertexAttrib4ubv(index : UInt32, v : UInt8*) : Void
+  fun vertex_attrib_4uiv = glVertexAttrib4uiv(index : UInt32, v : UInt32*) : Void
+  fun vertex_attrib_4usv = glVertexAttrib4usv(index : UInt32, v : UInt16*) : Void
+  fun vertex_attrib_binding = glVertexAttribBinding(attribindex : UInt32, bindingindex : UInt32) : Void
+  fun vertex_attrib_divisor = glVertexAttribDivisor(index : UInt32, divisor : UInt32) : Void
+  fun vertex_attrib_format = glVertexAttribFormat(attribindex : UInt32, size : Int32, type : Enum, normalized : Bool, relativeoffset : UInt32) : Void
+  fun vertex_attrib_i_1i = glVertexAttribI1i(index : UInt32, v0 : Int32) : Void
+  fun vertex_attrib_i_1iv = glVertexAttribI1iv(index : UInt32, v : Int32*) : Void
+  fun vertex_attrib_i_1ui = glVertexAttribI1ui(index : UInt32, v0 : UInt32) : Void
+  fun vertex_attrib_i_1uiv = glVertexAttribI1uiv(index : UInt32, v : UInt32*) : Void
+  fun vertex_attrib_i_2i = glVertexAttribI2i(index : UInt32, v0 : Int32, v1 : Int32) : Void
+  fun vertex_attrib_i_2iv = glVertexAttribI2iv(index : UInt32, v : Int32*) : Void
+  fun vertex_attrib_i_2ui = glVertexAttribI2ui(index : UInt32, v0 : UInt32, v1 : UInt32) : Void
+  fun vertex_attrib_i_2uiv = glVertexAttribI2uiv(index : UInt32, v : UInt32*) : Void
+  fun vertex_attrib_i_3i = glVertexAttribI3i(index : UInt32, v0 : Int32, v1 : Int32, v2 : Int32) : Void
+  fun vertex_attrib_i_3iv = glVertexAttribI3iv(index : UInt32, v : Int32*) : Void
+  fun vertex_attrib_i_3ui = glVertexAttribI3ui(index : UInt32, v0 : UInt32, v1 : UInt32, v2 : UInt32) : Void
+  fun vertex_attrib_i_3uiv = glVertexAttribI3uiv(index : UInt32, v : UInt32*) : Void
+  fun vertex_attrib_i_4bv = glVertexAttribI4bv(index : UInt32, v : GLbyte*) : Void
+  fun vertex_attrib_i_4i = glVertexAttribI4i(index : UInt32, v0 : GLint, v1 : GLint, v2 : GLint, v3 : GLint) : Void
+  fun vertex_attrib_i_4iv = glVertexAttribI4iv(index : UInt32, v : GLint*) : Void
+  fun vertex_attrib_i_4sv = glVertexAttribI4sv(index : UInt32, v : GLshort*) : Void
+  fun vertex_attrib_i_4ubv = glVertexAttribI4ubv(index : UInt32, v : GLubyte*) : Void
+  fun vertex_attrib_i_4ui = glVertexAttribI4ui(index : GLuint, v0 : GLuint, v1 : GLuint, v2 : GLuint, v3 : GLuint) : Void
+  fun vertex_attrib_i_4uiv = glVertexAttribI4uiv(index : GLuint, v : GLuint*) : Void
+  fun vertex_attrib_i_4usv = glVertexAttribI4usv(index : GLuint, v : GLushort*) : Void
+  fun vertex_attrib_i_format = glVertexAttribIFormat(attribindex : GLuint, size : GLint, type : GLenum, relativeoffset : GLuint) : Void
+  fun vertex_attrib_i_pointer = glVertexAttribIPointer(index : GLuint, size : GLint, type : GLenum , stride : GLsizei, pointer : Void*) : Void
+  fun vertex_attrib_l_1d = glVertexAttribL1d(index : GLuint , v0 : GLdouble) : Void
+  fun vertex_attrib_l_1dv = glVertexAttribL1dv(index : GLuint , v : GLdouble*) : Void
+  fun vertex_attrib_l_2d = glVertexAttribL2d(index : GLuint, v0 : GLdouble , v1 : GLdouble) : Void
+  fun vertex_attrib_l_2dv = glVertexAttribL2dv(index : GLuint, v : GLdouble*) : Void
+  fun vertex_attrib_l_3d = glVertexAttribL3d(index : GLuint, v0 : GLdouble, v1 : GLdouble, v2 : GLdouble) : Void
+  fun vertex_attrib_l_3dv = glVertexAttribL3dv(index : GLuint, v : GLdouble*) : Void
+  fun vertex_attrib_l_4d = glVertexAttribL4d(index : GLuint, v0 : GLdouble, v1 : GLdouble, v2 : GLdouble, v3 : GLdouble) : Void
+  fun vertex_attrib_l_4dv = glVertexAttribL4dv(index : GLuint, v : GLdouble*) : Void
+  fun vertex_attrib_l_format = glVertexAttribLFormat(attribindex : GLuint, size : GLint, type : GLenum, relativeoffset : GLuint) : Void
+  fun vertex_attrib_l_pointer = glVertexAttribLPointer(index : GLuint, size : GLint, type : GLenum, stride : GLsizei, pointer : Void*) : Void
+  fun vertex_attrib_p_1ui = glVertexAttribP1ui(index : GLuint, type : GLenum, normalized : GLboolean, value : GLuint) : Void
+  fun vertex_attrib_p_2ui = glVertexAttribP2ui(index : GLuint, type : GLenum, normalized : GLboolean, value : GLuint) : Void
+  fun vertex_attrib_p_3ui = glVertexAttribP3ui(index : GLuint, type : GLenum, normalized : GLboolean, value : GLuint) : Void
+  fun vertex_attrib_p_4ui = glVertexAttribP4ui(index : GLuint, type : GLenum, normalized : GLboolean, value : GLuint) : Void
+  fun vertex_attrib_pointer = glVertexAttribPointer(index : GLuint, size : GLint, type : GLenum, normalized : GLboolean, stride : GLsizei, pointer : Void*) : Void
+  fun vertex_binding_divisor = glVertexBindingDivisor(bindingindex : GLuint, divisor : GLuint) : Void
+  fun viewport = glViewport(x : GLint, y : GLint, width : GLsizei, height : GLsizei) : Void
+  fun viewport_array = glViewportArrayv(first : GLuint32 , count : GLsizei, v : GLfloat*) : Void
+  fun viewport_array_v = glViewportArrayv(first : GLuint, count : GLsizei, v : GLfloat*) : Void
+  # fun glViewportIndexed = 
+  fun viewport_indexed_f = glViewportIndexedf(index : GLuint, x : GLfloat, y : GLfloat, w : GLfloat, h : GLfloat) : Void
+  fun viewport_indexed_fv = glViewportIndexedfv(index : GLuint, v : GLfloat *) : Void
   # -> W
-  fun glWaitSync
-
-  ##############################################################################
-  # GLSL Functions
-  ##############################################################################
-  # -> A
-  abs
-  acos
-  acosh
-  all
-  any
-  asin
-  asinh
-  atan
-  atanh
-  atomicAdd
-  atomicAnd
-  atomicCompSwap
-  atomicCounter
-  atomicCounterDecrement
-  atomicCounterIncrement
-  atomicExchange
-  atomicMax
-  atomicMin
-  atomicOr
-  atomicXor
-  # -> B
-  barrier
-  bitCount
-  bitfieldExtract
-  bitfieldInsert
-  bitfieldReverse
-  # -> C
-  ceil
-  clamp
-  cos
-  cosh
-  cross
-  # -> D
-  degrees
-  determinant
-  dFdx
-  dFdxCoarse
-  dFdxFine
-  dFdy
-  dFdyCoarse
-  dFdyFine
-  distance
-  dot
-  # -> E
-  EmitStreamVertex
-  EmitVertex
-  EndPrimitive
-  EndStreamPrimitive
-  equal
-  exp
-  exp2
-  # -> F
-  faceforward
-  findLSB
-  findMSB
-  floatBitsToInt
-  floatBitsToUint
-  floor
-  fma
-  fract
-  frexp
-  fwidth
-  fwidthCoarse
-  fwidthFine
-  # -> G
-  gl_ClipDistance
-  gl_CullDistance
-  gl_FragCoord
-  gl_FragDepth
-  gl_FrontFacing
-  gl_GlobalInvocationID
-  gl_HelperInvocation
-  gl_InstanceID
-  gl_InvocationID
-  gl_Layer
-  gl_LocalInvocationID
-  gl_LocalInvocationIndex
-  gl_NumSamples
-  gl_NumWorkGroups
-  gl_PatchVerticesIn
-  gl_PointCoord
-  gl_PointSize
-  gl_Position
-  gl_PrimitiveID
-  gl_PrimitiveIDIn
-  gl_SampleID
-  gl_SampleMask
-  gl_SampleMaskIn
-  gl_SamplePosition
-  gl_TessCoord
-  gl_TessLevelInner
-  gl_TessLevelOuter
-  gl_VertexID
-  gl_ViewportIndex
-  gl_WorkGroupID
-  gl_WorkGroupSize
-  greaterThan
-  greaterThanEqual
-  groupMemoryBarrier
-  # -> I
-  imageAtomicAdd
-  imageAtomicAnd
-  imageAtomicCompSwap
-  imageAtomicExchange
-  imageAtomicMax
-  imageAtomicMin
-  imageAtomicOr
-  imageAtomicXor
-  imageLoad
-  imageSamples
-  imageSize
-  imageStore
-  imulExtended
-  intBitsToFloat
-  interpolateAtCentroid
-  interpolateAtOffset
-  interpolateAtSample
-  inverse
-  inversesqrt
-  isinf
-  isnan
-  # -> L
-  ldexp
-  length
-  lessThan
-  lessThanEqual
-  log
-  log2
-  # -> M
-  matrixCompMult
-  max
-  memoryBarrier
-  memoryBarrierAtomicCounter
-  memoryBarrierBuffer
-  memoryBarrierImage
-  memoryBarrierShared
-  min
-  mix
-  mod
-  modf
-  # -> N
-  noise
-  noise1
-  noise2
-  noise3
-  noise4
-  normalize
-  not
-  notEqual
-  # -> O
-  outerProduct
-  # -> P
-  packDouble2x32
-  packHalf2x16
-  packSnorm2x16
-  packSnorm4x8
-  packUnorm
-  packUnorm2x16
-  packUnorm4x8
-  pow
-  # -> R
-  radians
-  reflect
-  refract
-  round
-  roundEven
-  # -> S
-  sign
-  sin
-  sinh
-  smoothstep
-  sqrt
-  step
-  # -> T
-  tan
-  tanh
-  texelFetch
-  texelFetchOffset
-  texture
-  textureGather
-  textureGatherOffset
-  textureGatherOffsets
-  textureGrad
-  textureGradOffset
-  textureLod
-  textureLodOffset
-  textureOffset
-  textureProj
-  textureProjGrad
-  textureProjGradOffset
-  textureProjLod
-  textureProjLodOffset
-  textureProjOffset
-  textureQueryLevels
-  textureQueryLod
-  textureSamples
-  textureSize
-  transpose
-  trunc
-  # -> U
-  uaddCarry
-  uintBitsToFloat
-  umulExtended
-  unpackDouble2x32
-  unpackHalf2x16
-  unpackSnorm2x16
-  unpackSnorm4x8
-  unpackUnorm
-  unpackUnorm2x16
-  unpackUnorm4x8
-  usubBorrow
+  fun wait_sync = glWaitSync(sync : GLsync, flags : GLbitfield, timeout : UInt64) : Void
 end
