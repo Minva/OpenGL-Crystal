@@ -34,4 +34,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [minva](https://github.com/lodenos) - creator and maintainer
+- [lodenos](https://github.com/lodenos) - creator and maintainer
