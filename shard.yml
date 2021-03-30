@@ -1,9 +1,9 @@
-name: src
+name: opengl
 version: 4.5.0
 
 authors:
   - lodenos <nikolaiilodenos@gmail.com>
 
-crystal: 0.36.1
+crystal: 1.0.0
 
 license: Unlicense
